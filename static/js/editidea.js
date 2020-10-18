@@ -457,7 +457,7 @@ dynamodb.query(queryParams, function(err, data) {
 			    		</button>
 			        </div>
 					`);
-				$(".project-banner").attr("style", "background-image: url('https://img.youtube.com/vi/"+data.Items[0].YoutubeBG.S+"/maxresdefault.jpg'); background-size: cover; background-position: center center; position: relative; overflow: hidden;");
+				$(".project-banner").attr("style", "background-image: url('https://img.youtube.com/vi/"+(data.Items[0].YoutubeBG.S).split('v=')[1]+"/maxresdefault.jpg'); background-size: cover; background-position: center center; position: relative; overflow: hidden;");
 				$(".project-banner").append(`<div style="position: absolute; left: 0px; top: 0px;">
 											<iframe id="player0" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="`+$(".project-banner").width()+`" height="`+$(".project-banner").height()+`" style="pointer-events: none;"></iframe>
 										</div>`);
@@ -1756,7 +1756,7 @@ $("button.save").click( function() {
 $("button.view").click( function() {
 	$.ajax({
 		type : "GET",
-		url : "https://mindmates.net/wp-json/wp/v2/viewmode",
+		url : "/wp-json/wp/v2/viewmode",
 		error: function(error) {
 			console.log("Error while listing existing ideas in viewmode: ");
 			console.log(error);
@@ -1775,7 +1775,7 @@ $("button.view").click( function() {
 				$.ajax({
 					type : "POST",
 					dataType : "json",
-					url : "https://mindmates.net/wp-json/wp/v2/viewmode",
+					url : "/wp-json/wp/v2/viewmode",
 					data : {_wpnonce: nonce, title: projectID, status: "publish", content: projectIDemail, template: "viewmode.php"},
 					error: function(error) {
 						console.log("Error while creating idea: " + error);
@@ -1794,7 +1794,7 @@ $(".idt-switch").click( function() {
 	if ($(".idt-switch__inner").attr("class").substr(-1) === "f") {
 		$.ajax({
 			type : "GET",
-			url : "https://mindmates.net/wp-json/wp/v2/projects",
+			url : "/wp-json/wp/v2/projects",
 			error: function(error) {
 				console.log("Error while listing existing ideas in projects: ");
 				console.log(error);
@@ -1813,7 +1813,7 @@ $(".idt-switch").click( function() {
 					$.ajax({
 						type : "POST",
 						dataType : "json",
-						url : "https://mindmates.net/wp-json/wp/v2/projects",
+						url : "/wp-json/wp/v2/projects",
 						data : {_wpnonce: nonce, title: $(".project-title").val(), status: "publish", content: projectID+","+projectIDemail, template: "publishidea.php"},
 						error: function(error) {
 							console.log("Error while publishing project: " + error);
@@ -1832,7 +1832,7 @@ $(".idt-switch").click( function() {
 	} else {
 		$.ajax({
 			type : "GET",
-			url : "https://mindmates.net/wp-json/wp/v2/projects",
+			url : "/wp-json/wp/v2/projects",
 			error: function(error) {
 				console.log("Error while listing existing ideas in projects: ");
 				console.log(error);
@@ -1848,7 +1848,7 @@ $(".idt-switch").click( function() {
 				$.ajax({
 					type : "DELETE",
 					dataType : "json",
-					url : "https://mindmates.net/wp-json/wp/v2/projects/"+existing_projects[$(".project-title").val().toLowerCase().replace(/ /g, '-')],
+					url : "/wp-json/wp/v2/projects/"+existing_projects[$(".project-title").val().toLowerCase().replace(/ /g, '-')],
 					beforeSend: function ( xhr ) {
 				        xhr.setRequestHeader( 'X-WP-Nonce', nonce );
 				    },

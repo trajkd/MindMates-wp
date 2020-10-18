@@ -18,8 +18,11 @@
     <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/boffi.css">
     <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/header.css">
     <link href="/wp-content/themes/MindMates-wp/static/css/clean-blog.css" rel="stylesheet">
-</head>
-
+    <style>
+        .comments-section {
+          scale: .8;
+        }
+    </style>
 <body>
     <div id="sidebar-section-peripherial">
         <?php get_sidebar(); ?>
@@ -44,6 +47,13 @@
                         <?php the_content(); ?>
                     </div>
                 </div>
+            </div>
+            <div class="comments-section">
+                <?php 
+                if (comments_open()){
+                    comments_template();
+                } 
+                ?>
             </div>
         </article>
         <?php get_footer(); ?>

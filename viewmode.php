@@ -23,18 +23,25 @@ if ( !is_user_logged_in() ){ header( "Location: /member/login" ); die; } ?>
         <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no" name="viewport">
         <meta name="robots" content="index, follow">
         <title>Add idea - <?php bloginfo( 'name' ) ?></title>
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/ck.css">
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/ot.css">
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/vue.css">
+        <link href="/wp-content/themes/MindMates-wp/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="/wp-content/themes/MindMates-wp/static/css/app.css">
         <link rel="stylesheet" href="/wp-content/themes/MindMates-wp/static/css/css2.css">
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/idt-chat.css">
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/idt-history.css">
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/idt-user-list.css">
         <style>
             :root {
-            --main-color-hue: 360;
-            --main-color-saturation: 60%;
-            --main-color-lightness: 50%;
+            --main-color-hue: 225;
+            --main-color-saturation: 75%;
+            --main-color-lightness: 56%;
             --title-font-family: Alata, serif;
             --text-font-family: Roboto, sans-serif;
             }
             .Ideas {
-            	color: #ff0007;
+            	color: #243e8e;
             }
         </style>
         <meta name="title" content="<?php bloginfo( 'name' ) ?>">
@@ -47,10 +54,6 @@ if ( !is_user_logged_in() ){ header( "Location: /member/login" ); die; } ?>
             text-overflow: ellipsis;
             }
         </style>
-        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/ck.css">
-        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/ot.css">
-        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/vue.css">
-        <link href="/wp-content/themes/MindMates-wp/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/wp-content/themes/MindMates-wp/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>

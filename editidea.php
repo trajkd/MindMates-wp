@@ -24,8 +24,17 @@ if ( !is_user_logged_in() ){ header( "Location: /member/login" ); die; } ?>
         <meta name="robots" content="index, follow">
         <title>Add idea - <?php bloginfo( 'name' ) ?></title>
         <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/header.css">
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/ck.css">
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/ot.css">
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/vue.css">
+        <link href="/wp-content/themes/MindMates-wp/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="/wp-content/themes/MindMates-wp/static/css/app.css">
         <link rel="stylesheet" href="/wp-content/themes/MindMates-wp/static/css/css2.css">
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/idt-room.css">
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/idt-chat.css">
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/idt-room-message.css">
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/idt-history.css">
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/idt-user-list.css">
         <style>
             :root {
             --main-color-hue: 225;
@@ -48,10 +57,6 @@ if ( !is_user_logged_in() ){ header( "Location: /member/login" ); die; } ?>
             text-overflow: ellipsis;
             }
         </style>
-        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/ck.css">
-        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/ot.css">
-        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/vue.css">
-        <link href="/wp-content/themes/MindMates-wp/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/wp-content/themes/MindMates-wp/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -208,6 +213,8 @@ if ( !is_user_logged_in() ){ header( "Location: /member/login" ); die; } ?>
 	                                                                        <li role="menuitem"> <input type="checkbox" id="Latin"> <label class="dropdown-pane__checkbox" for="Latin"> Latin </label> </li>
 	                                                                        <!---->
 	                                                                        <li role="menuitem"> <input type="checkbox" id="Mathematics"> <label class="dropdown-pane__checkbox" for="Mathematics"> Mathematics </label> </li>
+	                                                                        <!---->
+	                                                                        <li role="menuitem"> <input type="checkbox" id="Philosophy"> <label class="dropdown-pane__checkbox" for="Philosophy"> Philosophy </label> </li>
 	                                                                        <!---->
 	                                                                        <li role="menuitem"> <input type="checkbox" id="Physics"> <label class="dropdown-pane__checkbox" for="Physics"> Physics </label> </li>
 	                                                                        <!---->
@@ -499,6 +506,237 @@ if ( !is_user_logged_in() ){ header( "Location: /member/login" ); die; } ?>
 	                    </div>
 	                </div>
 	                <!---->
+	                <div class="idt-messenger">
+				    <div id="idt-chat" class="idt-chat"></div>
+				    <div class="idt-messenger-sidebar">
+				        <!----> 
+				        <div class="idt-messenger-toggle">
+				            <!----> 
+				            <div class="idt-messenger-toggle__icon-chat">
+				                <div class="idt-icon">
+				                    <i class="far fa-comment-dots"></i>
+				                    <!---->
+				                </div>
+				            </div>
+				            <div class="idt-messenger-toggle__label">
+				                <div class="idt-messenger-toggle__label__text">
+				                    Chat Rooms
+				                </div>
+				            </div>
+				            <div class="idt-messenger-toggle__icon-state">
+				                <div class="idt-icon">
+				                    <i class="fas fa-chevron-left"></i>
+				                    <!---->
+				                </div>
+				            </div>
+				        </div>
+				        <div class="idt-user-profile-container">
+				            <div class="idt-user-profile">
+				                <div class="idt-user-profile__header">
+				                    <div class="idt-user-profile__header__left">
+				                        <div class="idt-user-profile__title">
+				                            <div class="idt-icon">
+				                                <i class="far fa-id-badge"></i>
+				                                <!---->
+				                            </div>
+				                            Profile
+				                        </div>
+				                    </div>
+				                    <div class="idt-user-profile__header__right">
+				                        <button class="idt-messenger-close">
+				                            <div class="idt-icon">
+				                                <i class="fas fa-times"></i>
+				                                <!---->
+				                            </div>
+				                        </button>
+				                    </div>
+				                </div>
+				                <div class="idt-user-profile__content">
+				                    <div class="idt-user-profile__avatar">
+				                        <div class="idt-user-avatar" style="width: 168px; height: 168px;"><span class="idt-user-avatar__initial" style="font-size: 126px; line-height: 168px;">
+				                            ?
+				                            </span>
+				                        </div>
+				                    </div>
+				                    <div class="idt-user-profile__username">
+				                    </div>
+				                    <div class="idt-user-profile__user-tag">
+				                        <!----> <!---->
+				                    </div>
+				                    <!----> <!----> <!----> <!----> 
+				                    <div class="idt-user-profile__desc">
+				                    </div>
+				                    <div class="idt-user-profile__separator"></div>
+				                    <!----> 
+				                    <div class="idt-user-profile__infos">
+				                        <div class="idt-user-profile__infos__label">
+				                        	Role:
+				                        </div>
+				                        <div class="idt-user-profile__infos__content">
+				                        </div>
+				                    </div>
+				                    <div class="idt-user-profile__button">
+				                        <button ype="button" class="button expanded">
+				                            Start chatting 
+				                            <div class="idt-icon">
+				                            	<i class="far fa-comment-dots"></i>
+				                                <!---->
+				                            </div>
+				                        </button>
+				                    </div>
+				                </div>
+				            </div>
+				        </div>
+				        <div class="idt-user-list-container">
+				            <div class="idt-user-list">
+				                <div class="idt-user-list__header">
+				                    <div class="idt-user-list__header__left">
+				                        <div class="idt-user-list__title">
+				                            <div class="idt-icon">
+				                                <i class="far fa-user"></i>
+				                                <!---->
+				                            </div>
+				                            User list
+				                        </div>
+				                    </div>
+				                    <div class="idt-user-list__header__right">
+				                        <button class="idt-messenger-close">
+				                            <div class="idt-icon">
+				                                <i class="fas fa-times"></i>
+				                                <!---->
+				                            </div>
+				                        </button>
+				                    </div>
+				                </div>
+				                <div class="idt-user-list__toolbar">
+				                    <div class="idt-user-list__toolbar__searchbar">
+				                        <input type="text" placeholder="Search User"> 
+				                        <div class="idt-icon">
+				                            <i class="fas fa-search"></i>
+				                            <!---->
+				                        </div>
+				                    </div>
+				                    <div class="idt-user-list__toolbar__filter">
+				                        <div class="idt-user-list__toolbar__filter__title">
+				                            Filter
+				                        </div>
+				                        <div class="input-dropdown">
+				                            <div class="idt-dropdown">
+				                                <div class="idt-dropdown--toggle">
+				                                    <div class="input-dropdown__input__container">
+				                                        <div name="label" class="input-dropdown__input div">
+				                                            <span >
+				                                            Student, Teacher or Parent
+				                                            </span> 
+				                                            <ul class="tag-list"> </ul>
+				                                            <div class="idt-icon">
+				                                                <i class="fas fa-chevron-down"></i>
+				                                                <!---->
+				                                            </div>
+				                                        </div>
+				                                    </div>
+				                                </div>
+				                                <div class="idt-dropdown--pane" style="top: 53px; left: 0px; position: absolute;">
+				                                    <div class="dropdown-pane__header">
+				                                        Role
+				                                    </div>
+				                                    <ul class="dropdown menu multiple vertical">
+				                                        <li><input type="checkbox" id="Student" class=""> <label for="Student" class="dropdown-pane__checkbox">
+				                                            Student
+				                                            </label>
+				                                        </li>
+				                                        <li><input type="checkbox" id="Teacher" class=""> <label for="Teacher" class="dropdown-pane__checkbox">
+				                                            Teacher
+				                                            </label>
+				                                        </li>
+				                                        <li><input type="checkbox" id="Parent" class=""> <label for="Parent" class="dropdown-pane__checkbox">
+				                                            Parent
+				                                            </label>
+				                                        </li>
+				                                    </ul>
+				                                    <div class="dropdown-pane__header">
+				                                        Types
+				                                    </div>
+				                                    <ul class="dropdown menu multiple vertical">
+				                                        <li><input type="checkbox" id="creative-mind" class=""> <label for="creative-mind" class="dropdown-pane__checkbox">
+				                                            Creative mind
+				                                            </label>
+				                                        </li>
+				                                        <li><input type="checkbox" id="analytical-mind" class=""> <label for="analytical-mind" class="dropdown-pane__checkbox">
+				                                            Analytical mind
+				                                            </label>
+				                                        </li>
+				                                        <li><input type="checkbox" id="writing-mind" class=""> <label for="writing-mind" class="dropdown-pane__checkbox">
+				                                            Writing mind
+				                                            </label>
+				                                        </li>
+				                                        <li><input type="checkbox" id="designer-mind" class=""> <label for="designer-mind" class="dropdown-pane__checkbox">
+				                                            Designer mind
+				                                            </label>
+				                                        </li>
+				                                        <li><input type="checkbox" id="researcher-mind" class=""> <label for="researcher-mind" class="dropdown-pane__checkbox">
+				                                            Researcher mind
+				                                            </label>
+				                                        </li>
+				                                        <li><input type="checkbox" id="engineer-mind" class=""> <label for="engineer-mind" class="dropdown-pane__checkbox">
+				                                            Engineer mind
+				                                            </label>
+				                                        </li>
+				                                    </ul>
+				                                </div>
+				                            </div>
+				                        </div>
+				                    </div>
+				                </div>
+				                <div class="idt-user-list__list">
+				                </div>
+				                <!----> <!---->
+				            </div>
+				        </div>
+				        <div class="idt-history-container">
+				            <div class="idt-history">
+				                <div class="idt-history__header">
+				                    <div class="idt-history__header__left">
+				                        <div class="idt-history__header__left__title">
+				                            <div class="idt-icon">
+				                                <i class="far fa-comments"></i>
+				                                <!---->
+				                            </div>
+				                            Chat Rooms
+				                        </div>
+				                    </div>
+				                    <div class="idt-history__header__right">
+				                        <button class="idt-history__header__right__close">
+				                            <div class="idt-icon">
+				                                <i class="fas fa-times"></i>
+				                                <!---->
+				                            </div>
+				                        </button>
+				                    </div>
+				                </div>
+				                <div class="idt-history__toolbar">
+				                    <button class="idt-history__toolbar__open-btn">
+				                        <div class="idt-history__toolbar__open-btn__arrow">
+				                            <div class="idt-icon">
+				                                <i class="fas fa-long-arrow-alt-left"></i>
+				                                <!---->
+				                            </div>
+				                        </div>
+				                        <div class="idt-history__toolbar__open-btn__text">
+				                            Start chatting
+				                        </div>
+				                        <div class="idt-icon">
+				                            <i class="fas fa-comment-medical"></i>
+				                            <!---->
+				                        </div>
+				                    </button>
+				                    <div class="idt-history__toolbar__searchbar"><input type="text" placeholder="Search chat rooms"></div>
+				                </div>
+				                <div class="idt-history__list"></div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
 	            </div>
 	        </idt-page>
 	        <?php get_footer(); ?>
@@ -510,5 +748,6 @@ if ( !is_user_logged_in() ){ header( "Location: /member/login" ); die; } ?>
 		<script src="/wp-content/themes/MindMates-wp/static/js/clean-blog.js"></script>
 		<script src="/wp-content/themes/MindMates-wp/static/js/sidebar.js"></script>
 		<script src="/wp-content/themes/MindMates-wp/static/js/editidea.js"></script>
+		<script src="/wp-content/themes/MindMates-wp/static/js/chat.js"></script>
     </body>
 </html>

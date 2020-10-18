@@ -40,7 +40,7 @@
     <div id="aboutmm">
       <div id="aboutmm-title">ABOUT <span class="MM redden-slides">MM</span></div>
       <div id="aboutmm-location">
-        <span class="MM">MM</span> WAS CREATED FOR THE
+        <span class="MM">MM</span>&nbsp; WAS CREATED FOR THE
         <br>
         <b>2020 HACKEREARTH HACKCCELERATE</b> 
         <br>
@@ -49,7 +49,7 @@
       <div id="spacing"></div>
       <div id="aboutmm-aim">
         <div>
-          <span class="MM">MM</span> AIMS TO SUPPORT 
+          <span class="MM">MM</span>&nbsp; AIMS TO SUPPORT 
         </div>
         <div>
         </div>

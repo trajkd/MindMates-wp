@@ -1,4 +1,3 @@
-<?php /* Template Name: Wiki */ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,25 +21,22 @@
  	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 	<script src="/wp-content/themes/MindMates-wp/static/js/main.js"></script>
  	<script src="https://kit.fontawesome.com/4c0b3ae1d6.js" crossorigin="anonymous"></script>
- 	<script type="text/javascript">
-    	var memberID = "<?php echo esc_html( $current_user->user_email ); ?>";
-    </script>
 	<title>Wiki - <?php bloginfo( 'name' ) ?></title>
 </head>
 <body>
 	<div id="sidebar-section-peripherial">
     <?php get_sidebar(); ?>
-		<div class="mdc-layout-grid wiki-grid">
+		<div class="mdc-layout-grid">
 		  <div class="mdc-layout-grid__inner">
-				<?php $the_query = new WP_Query('post_type=wiki'); 
-				if ($the_query -> have_posts())
-			    while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
+				<?php 
+				if (have_posts())
+			    while (have_posts()) : the_post(); ?>
 		    <div class="mdc-layout-grid__cell">
 		      <div class="mdc-card">
 		    	<div class="display">
 		    	  <a href="<?php the_permalink() ?>">
 					<div class="mdc-card__primary-action">
-					  <div class="mdc-card__media mdc-card__media--square my-card__media" style="background-image: url('<?php if(get_the_post_thumbnail_url()) echo get_the_post_thumbnail_url() ?>');"></div>
+					  <div class="mdc-card__media mdc-card__media--16-9 my-card__media" style="background-image: url('<?php if(get_the_post_thumbnail_url()) echo get_the_post_thumbnail_url(); else echo '/wp-content/themes/MindMates-wp/static/img/ikea-vari.svg' ?>');"></div>
 					</div>
 				  </a>
 				  <div class="summary">
@@ -51,7 +47,7 @@
 				</div>
 			    <div class="mdc-card__actions">
 			      <div class="mdc-card__action-buttons">
-			        <a href="<?php the_permalink(); ?>">
+			        <a href="<?php the_permalink() ?>">
 			      	  <button class="mdc-button mdc-card__action mdc-card__action--button gotoarticle">
 				        <div class="mdc-button__ripple"></div>
 				        <span class="mdc-button__label">Go to article</span>
@@ -59,11 +55,11 @@
 			        </a>
 			        <button class="mdc-button mdc-card__action mdc-card__action--button expand">
 			          <div class="mdc-button__ripple"></div>
-			          <span class="mdc-button__label">Expand</span> 
+			          <span class="mdc-button__label">Expand</span>
 			        </button>
 			      </div>
 			      <div class="mdc-card__action-icons">
-			        <button class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon heart" title="Add to favorites"><span id="<?php echo the_ID(); ?>"></span><i class="fas fa-heart stroke-transparent"></i></button>
+			        <!-- <button class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon heart" title="Add to favorites"><i class="fas fa-heart stroke-transparent"></i></button> -->
 			        <button class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon" title="Share"><i class="fas fa-share-alt"></i></button>
 			      </div>
 			    </div>
@@ -83,7 +79,5 @@
 <script src="/wp-content/themes/MindMates-wp/static/js/jquery.js"></script>
 <script src="/wp-content/themes/MindMates-wp/static/js/clean-blog.js"></script>
 <script src="/wp-content/themes/MindMates-wp/static/js/sidebar.js"></script>
-<script src="https://sdk.amazonaws.com/js/aws-sdk-2.766.0.min.js"></script>
-<script src="/wp-content/themes/MindMates-wp/static/js/wiki.js"></script>
 </body>
 </html>

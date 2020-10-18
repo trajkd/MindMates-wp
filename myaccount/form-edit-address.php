@@ -30,7 +30,7 @@ if (!empty(get_user_meta( get_current_user_id(), 'shipping_address_1', true ))) 
         <form class="form-address-edit pf_add-address" action="/customer/account/edit-address/billing" method="post" id="form-validate" enctype="multipart/form-data">
 		<?php do_action( "woocommerce_before_edit_address_form_{$load_address}" ); ?>
             <fieldset class="fieldset">
-                <legend class="legend"><span><?php esc_html_e( 'Shipping address', 'woocommerce' ); ?></span></legend><br>
+                <legend class="legend"><span><?php esc_html_e( 'Home address', 'woocommerce' ); ?></span></legend><br>
                 <div class="field field-name-firstname required">
                     <label class="label" for="shipping_first_name"><span><?php esc_html_e( 'First name', 'woocommerce' ); ?></span></label>
                     <div class="control">
@@ -153,16 +153,10 @@ if (!empty(get_user_meta( get_current_user_id(), 'shipping_address_1', true ))) 
                         <input type="text" name="billing_city" value="<?php if ( ! empty( $_POST['billing_city'] ) ) echo esc_html( $_POST['billing_city'] ); else if (!empty(get_user_meta( get_current_user_id(), 'billing_city', true ))) echo get_user_meta( get_current_user_id(), 'billing_city', true ); ?>" title="<?php esc_html_e( 'City', 'woocommerce' ); ?>" class="input-text required-entry" id="billing_city" aria-required="true" required="">
                     </div>
                 </div>
-                <div class="field company ">
-                    <label for="billing_company" class="label"><span><?php esc_html_e( 'Company', 'woocommerce' ); ?></span></label>
-                    <div class="control">
-                        <input type="text" name="billing_company" id="billing_company" value="<?php if ( ! empty( $_POST['billing_company'] ) ) echo esc_html( $_POST['billing_company'] ); else if (!empty(get_user_meta( get_current_user_id(), 'billing_company', true ))) echo get_user_meta( get_current_user_id(), 'billing_company', true ); ?>" title="<?php esc_html_e( 'Company', 'woocommerce' ); ?>" class="input-text ">
-                    </div>
-                </div>
                 <div class="field taxvat required">
-                    <label class="label" for="vat_id"><span><?php esc_html_e( 'Tax Payer Identification Number (NPWP)', 'woocommerce' ); ?></span></label>
+                    <label class="label" for="vat_id"><span><?php esc_html_e( 'Social Security Number', 'woocommerce' ); ?></span></label>
                     <div class="control">
-                        <input type="text" name="vat_id" value="<?php if ( ! empty( $_POST['vat_id'] ) ) echo esc_html( $_POST['vat_id'] ); else if (!empty(get_user_meta( get_current_user_id(), 'vat_id', true ))) echo get_user_meta( get_current_user_id(), 'vat_id', true ); ?>" title="<?php esc_html_e( 'Tax Payer Identification Number (NPWP)', 'woocommerce' ); ?>" data-validate="{required:true}" class="input-text " id="vat_id" aria-required="true" required="">
+                        <input type="text" name="vat_id" value="<?php if ( ! empty( $_POST['vat_id'] ) ) echo esc_html( $_POST['vat_id'] ); else if (!empty(get_user_meta( get_current_user_id(), 'vat_id', true ))) echo get_user_meta( get_current_user_id(), 'vat_id', true ); ?>" title="<?php esc_html_e( 'Social Security Number', 'woocommerce' ); ?>" data-validate="{required:true}" class="input-text " id="vat_id" aria-required="true" required="">
                     </div>
                 </div>
                 <div class="field telephone required">

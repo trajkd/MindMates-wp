@@ -18,6 +18,28 @@
                         <div class="box-information-content">
                             <div class="box-content box-content-inline">
                                 <span class="box-title color-gray">
+                                    <span><?php esc_html_e( 'My profile', 'woocommerce' ); ?></span>
+                                </span>
+                                <p>
+                                    <div class="select" id="select-type-wrapper" data-ctrl="Select">
+                                        <div class="selectric-wrapper selectric-select"><div class="selectric-hide-select"></div>
+                                            <div id="select-role">
+                                                <select id="selectric-role" name="role">
+                                                    <option value="student"><?php esc_html_e( 'Student', 'woocommerce' ); ?></option>
+                                                    <option value="teacher"><?php esc_html_e( 'Teacher', 'woocommerce' ); ?></option>
+                                                    <option value="parent"><?php esc_html_e( 'Parent', 'woocommerce' ); ?></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <span class="select__label">
+                                         <label data-ctrl-dom="label" class="select__floating-label" for="select-type"></label>
+                                         ▾
+                                         </span>
+                                    </div>
+                                </p>
+                            </div>
+                            <div class="box-content box-content-inline">
+                                <span class="box-title color-gray">
                                     <span><?php esc_html_e( 'First name', 'woocommerce' ); ?></span>
                                 </span>
                                 <p>
@@ -38,6 +60,36 @@
                                 </span>
                                 <p>
                                     <input type="email" name="account_email" id="account_email" autocomplete="email" data-input="change-email" value="<?php if ( ! empty( $_POST['user_email'] ) ) echo esc_html( $_POST['user_email'] ); else echo esc_html( $current_user->user_email ); ?>" title="<?php esc_html_e( 'Email', 'woocommerce' ); ?>" class="input-text" aria-required="true" data-validate="{required:true}" required>
+                                </p>
+                            </div>
+                            <div class="box-content">
+                                <span class="box-title color-gray">
+                                    <span><?php esc_html_e( 'Profile image', 'woocommerce' ); ?></span>
+                                </span>
+                                <p>
+                                    <div class="project-intro__logo">     
+                                        <img src="<?php 
+                                        if ($current_user->profile_image == '/wp-content/themes/MindMates-wp/static/img/mindmate-avatar.jpg') {
+                                            echo $current_user->profile_image;
+                                        } else {
+                                            $user_id = get_current_user_id();
+                                            $attachment_id = get_user_meta( $user_id, 'profile_image', true );
+                                            if ( $attachment_id ) {
+                                                $original_image_url = wp_get_attachment_url( $attachment_id );
+                                                echo wp_get_attachment_url( $attachment_id, 'full');
+                                            }
+                                        }
+                                        ?>"> 
+                                        <idt-fs-upload-file type="image" class="fs__image-upload__button" on-uploaded="onUploadedLogo" on-error="onError" label="">
+                                            <label type="button" class="button upload-logo upload-file__btn" accept="image/*" for="profile_image">
+                                                <input type="file" accept="image/*" class="input-file-hidden ng-pristine ng-untouched ng-valid ng-not-empty" id="profile_image" name="uploader" ng-model="files"> 
+                                                <span>
+                                                    <div class="fs__image-upload__button__spec"> Edit image </div>
+                                                </span>
+                                                <span class="upload-file__progress"></span>
+                                            </label>
+                                        </idt-fs-upload-file>
+                                    </div>
                                 </p>
                             </div>
                         </div>

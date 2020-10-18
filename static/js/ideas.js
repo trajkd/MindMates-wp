@@ -10,7 +10,7 @@ $("button.add-idea").click( function() {
 	} else {
 		$.ajax({
 			type : "GET",
-			url : "https://mindempathy.net/wp-json/wp/v2/editidea",
+			url : "/wp-json/wp/v2/editidea",
 			error: function(error) {
 				console.log("Error while listing existing ideas: ");
 				console.log(error);
@@ -29,7 +29,7 @@ $("button.add-idea").click( function() {
 					$.ajax({
 						type : "POST",
 						dataType : "json",
-						url : "https://mindempathy.net/wp-json/wp/v2/editidea",
+						url : "/wp-json/wp/v2/editidea",
 						data : {_wpnonce: nonce, title: uuid, status: "publish", content: projectIDemail, template: "editidea.php"},
 						error: function(error) {
 							console.log("Error while creating idea: " + error);
@@ -44,7 +44,7 @@ $("button.add-idea").click( function() {
 					$.ajax({
 						type : "POST",
 						dataType : "json",
-						url : "https://mindempathy.net/wp-json/wp/v2/editidea",
+						url : "/wp-json/wp/v2/editidea",
 						data : {_wpnonce: nonce, title: uuid, status: "publish", content: projectIDemail, template: "editidea.php"},
 						error: function(error) {
 							console.log("Error while creating idea: " + error);
@@ -84,18 +84,18 @@ dynamodb.scan(scanParams, function(err, data) {
 			var tracks = (data.Items[i].Tracks.S).split(',');
 			var hiring = (data.Items[i].Hiring.S).split(',');
 			if (data.Items[i].Logo.S === "") {
-				var logo = "/wp-content/themes/MindEmpathy-wp/static/img/idealogo.svg";
+				var logo = "/wp-content/themes/MindMates-wp/static/img/idealogo.svg";
 			} else {
 				var logo = data.Items[i].Logo.S;
 			}
 			if (data.Items[i].YoutubeBG.S === "") {
 				if (data.Items[i].ImageBG.S === "") {
-					var imageBG = "/wp-content/themes/MindEmpathy-wp/static/img/ikea-man.svg";
+					var imageBG = "/wp-content/themes/MindMates-wp/static/img/ikea-man.svg";
 				} else {
 					var imageBG = data.Items[i].ImageBG.S;
 				}
 			} else {
-				var imageBG = "https://img.youtube.com/vi/"+data.Items[i].YoutubeBG.S+"/maxresdefault.jpg";
+				var imageBG = "https://img.youtube.com/vi/"+(data.Items[i].YoutubeBG.S).split('v=')[1]+"/maxresdefault.jpg";
 			}
 			var projectItem = `<div class="projects__list-item">
 							        <a class="projects-card" href="/projects/`+(data.Items[i].Title.S).toLowerCase().replace(/ /g, '-')+`">

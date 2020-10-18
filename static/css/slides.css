@@ -3,6 +3,7 @@
   position: relative;
   height: 100vh;
   text-align: center;
+  line-height: 1.2;
 }
 
 #welcome-content {
@@ -33,6 +34,7 @@
   align-content: start;
   background-color: #f1f0e3;
   font-size: 2vw;
+  line-height: 1.2;
 }
 
 #start-content-internal {
@@ -106,6 +108,7 @@
   align-content: start;
   background-color: #f1f0e3;
   font-size: 2vw;
+  line-height: 1.2;
 }
 
 #start-one, #publish-two, #design-three, #attract-four, #build-five, #showcase-six {
@@ -215,6 +218,12 @@
   margin-top: 180px;
   background-color: #f1f0e3;
   font-size: 2vw;
+  line-height: 1.2;
+}
+
+#aboutmm-aim .MM {
+  font-family: 'BlairMdITC TT';
+  letter-spacing: -10.7px;
 }
 
 @media only screen and (min-width: 992px) {

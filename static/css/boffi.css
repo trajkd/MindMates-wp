@@ -4357,7 +4357,7 @@ html.desktop #menu:not(.open) #menu-bar.dark-theme:hover {
     }
 }
 #menu-bar__boffi-logo {
-    top: 28px;
+    top: 15px;
     right: 30px;
     bottom: auto;
     left: auto;
@@ -5007,6 +5007,7 @@ html.desktop #menu-content__level-1 a:hover {
         padding: 0;
         border: none;
         background-color: transparent;
+        overflow: visible;
     }
 }
 #menu-content__level-1 .card .card-header {

@@ -1,39 +1,3 @@
-$("#login-architect-designer").on('click', function() {
-	$("#login-architect-designer").removeAttr("tabindex");
-	$("#login-architect-designer").attr("aria-selected","true");
-	$("#login-dealer").attr("tabindex","-1");
-	$("#login-dealer").attr("aria-selected","false");
-	$("#login-customer").attr("tabindex","-1");
-	$("#login-customer").attr("aria-selected","false");
-	$("#login-architect-designer-content").removeAttr("hidden");
-	$("#login-dealer-content").attr("hidden","hidden");
-	$("#login-customer-content").attr("hidden","hidden");
-});
-
-$("#login-dealer").on('click', function() {
-	$("#login-architect-designer").attr("tabindex","-1");
-	$("#login-architect-designer").attr("aria-selected","false");
-	$("#login-dealer").removeAttr("tabindex");
-	$("#login-dealer").attr("aria-selected","true");
-	$("#login-customer").attr("tabindex","-1");
-	$("#login-customer").attr("aria-selected","false");
-	$("#login-architect-designer-content").attr("hidden","hidden");
-	$("#login-dealer-content").removeAttr("hidden");
-	$("#login-customer-content").attr("hidden","hidden");
-});
-
-$("#login-customer").on('click', function() {
-	$("#login-architect-designer").attr("tabindex","-1");
-	$("#login-architect-designer").attr("aria-selected","false");
-	$("#login-dealer").attr("tabindex","-1");
-	$("#login-dealer").attr("aria-selected","false");
-	$("#login-customer").removeAttr("tabindex");
-	$("#login-customer").attr("aria-selected","true");
-	$("#login-architect-designer-content").attr("hidden","hidden");
-	$("#login-dealer-content").attr("hidden","hidden");
-	$("#login-customer-content").removeAttr("hidden");
-});
-
 $(".context-menu__item").on('click', function() {
 	$(".context-menu__item").removeClass("active");
 	$(this).addClass("active");
@@ -46,7 +10,7 @@ $(document).ready(function() {
 		$(".input-text__input").removeClass("is--empty");
 	}
 	
-	$(".woocommerce-notices-wrapper").has(".woocommerce-error").attr("style", "display: flex;justify-content: center;padding: 20px;background-color: #ff0007;");
+	$(".woocommerce-notices-wrapper").has(".woocommerce-error").attr("style", "display: flex;justify-content: center;padding: 20px;background-color: #243e8e;");
 });
 
 $(".input-text__input").change(function() {

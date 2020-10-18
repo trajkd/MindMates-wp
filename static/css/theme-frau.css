@@ -38,7 +38,7 @@
 .box-actions .actions-toolbar .primary button,
 .box-actions .actions-toolbar .primary button:hover {
     border-color: #353535;
-    background-color: #353535;
+    border-radius: 8px;
     font-family: BlairMdITC TT;
     font-size: 20px !important;
     font-weight: 500;
@@ -1978,7 +1978,8 @@ ul.header__icons-nav {
     border: 0;
 }
  .actions-toolbar .primary button.action.primary:hover {
-    background-color: #ff0007 !important;
+    background-color: #243e8e !important;
+    color: white;
     border: 0;
     padding: 0 20px !important;
 
@@ -2181,7 +2182,6 @@ ul.header__icons-nav {
 }
  button:not(.primary):hover {
     box-shadow: none;
-    background-color: #353535;
     border: none;
 }
  .store-locator__form .txt-left {

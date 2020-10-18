@@ -633,7 +633,7 @@
           <div class="content-internal-title"><b>USER VALIDATION</b></div>
           <div class="content-internal-title"><b>YOU DID IT!</b></div>
           <div class="content-internal-description"><b>KEEP</b>, <b>ROLL BACK</b> OR <b>IMPROVE CHANGES</b> THROUGH <b>FEEDBACK</b> FROM YOUR TEAM AND TEACHERS TO GET TO A <b>FIRST PROTOTYPE</b></div>
-          <div class="content-internal-description"><b>PRESENT YOUR PROTOTYPE</b> TO OTHER MEMBERS INSIDE THE <span class="MM">MM</span> NETWORK
+          <div class="content-internal-description"><b>PRESENT YOUR PROTOTYPE</b> TO OTHER MEMBERS INSIDE THE <span class="MM">MM</span> NETWORK</div>
           <div class="content-internal-description"><b>RELEASE</b> THE FIRST VERSION OF YOUR PROJECT AND <b>TEST</b> IT WITH A GROUP OF MEMBERS</div>
           <div class="content-internal-description">GET <b>FEEDBACK</b> FROM YOUR FIRST ROUND OF USERS.</div>
           <div class="content-internal-description">

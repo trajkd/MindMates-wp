@@ -5985,7 +5985,6 @@ screen and (min-width:64em) {
 	line-height: 1;
 	white-space: nowrap;
 	cursor: default;
-	background: #33c7cc;
 	color: #fff
 }
 
@@ -21215,7 +21214,8 @@ idt-bo-menu .navbar-inverse .navbar-nav .menu-switch {
 	left: 0;
 	width: 100%;
 	height: 0;
-	z-index: 1000
+	z-index: 1000;
+	font-family: Roboto, sans-serif
 }
 
 .idt-messenger-chats {
@@ -21244,10 +21244,13 @@ idt-bo-menu .navbar-inverse .navbar-nav .menu-switch {
 	flex-flow: row nowrap;
 	flex: 0 0 auto;
 	position: relative;
+	left: 0;
 	height: 1rem;
 	-webkit-filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, .2));
 	filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, .2));
-	transform: translateZ(0)
+	transform: translateZ(0);
+	transition: 0.4s all;
+
 }
 
 @media only screen and (max-width:639px) {
@@ -21271,7 +21274,7 @@ idt-bo-menu .navbar-inverse .navbar-nav .menu-switch {
 
 .idt-messenger-toggle {
 	position: absolute;
-	bottom: 230px;
+	bottom: 280px;
 	left: 0;
 	width: 26px;
 	padding: 12px 0 10px 2px;
@@ -22154,11 +22157,6 @@ idt-menu-join {
 
 idt-menu-join .button {
 	margin: 0
-}
-
-.profile {
-	padding: 2rem 0;
-	background-color: #f8f8f8
 }
 
 .profile__part-title {
@@ -26023,11 +26021,11 @@ idt-menu-interview .idt-menu-conference__footer a {
 }
 
 .project-tools__actions .button.save {
-	background-color: var(--green)
+	background-color: var(--red)
 }
 
 .project-tools__actions .button.save:hover {
-	background-color: var(--green-dark)
+	background-color: var(--red-dark)
 }
 
 .project-tools .idt-switch,
@@ -63920,6 +63918,35 @@ input[type=checkbox].checked+.dropdown-pane__checkbox[data-v-599c3d04]:before {
 .project-presentation .trash-button {
 	padding: 10px;
 	margin: 10px;
+}
+
+button.idt-history__header__right__close, button.idt-messenger-close {
+	background-color: transparent;
+}
+
+.idt-user-profile button.idt-messenger-close:hover {
+	color: #4a4a4a;
+}
+
+.fa-search {
+	position: absolute;
+	bottom: 10px;
+	left: 300px;
+}
+
+.box-avatar-content {
+  width: 14vw;
+  position: absolute;
+  right: 50px;
+}
+
+.idt-chat button {
+	color: var(--main-color);
+}
+
+.idt-chat button:hover {
+	color: var(--main-color-darker);
+	background-color: transparent;
 }
 
 /*# sourceMappingURL=app.css.map*/

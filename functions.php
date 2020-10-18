@@ -3,9 +3,32 @@ function currentYear(){
     return date('Y');
 }
 
+register_meta( 'user', 'profile_image', [ 'show_in_rest' => true ] );
+
 remove_filter( 'the_content', 'wpautop' );
 
+remove_filter('term_description','wpautop'); 
+
 add_theme_support( 'woocommerce' );
+
+register_activation_hook ( __FILE__, 'on_activate' );
+function on_activate() {
+    global $wpdb;
+    $create_table_query = "
+            USE bitnami_wordpress;
+ 
+			CREATE TABLE IF NOT EXISTS `message` (
+			  `id` int(11) NOT NULL AUTO_INCREMENT,
+			  `messages`  text NOT NULL,
+			  `uid` varchar(11) NOT NULL,
+			  `name` varchar(20) NOT NULL,
+			  `time` varchar(20) NOT NULL,
+			  PRIMARY KEY (`id`)
+			);
+    ";
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $create_table_query );
+}
 
 /**
  * @snippet       WooCommerce User Registration Shortcode
@@ -45,6 +68,26 @@ function separate_registration_form() {
 			<?php endif; ?>
 	                            <form class="form create account form-create-account form-register-customer woocommerce-form woocommerce-form-register register" method="post" id="form-validate" enctype="multipart/form-data" autocomplete="off" <?php do_action( 'woocommerce_register_form_tag' ); ?> >
 	                            <?php do_action( 'woocommerce_register_form_start' ); ?>
+	                            	<div class="v-spacer-05">
+	                                    <div class="select" id="select-role-wrapper" data-ctrl="Select">
+	                                        <div class="selectric-wrapper selectric-select"><div class="selectric-hide-select"></div>
+		                                        <div id="select-role">
+		                                            <select id="selectric-role" name="role">
+														<option value="student"><?php esc_html_e( 'Student', 'woocommerce' ); ?></option>
+														<option value="teacher"><?php esc_html_e( 'Teacher', 'woocommerce' ); ?></option>
+														<option value="parent"><?php esc_html_e( 'Parent', 'woocommerce' ); ?></option>
+		                                            </select>
+		                                        </div>
+		                                    </div>
+	                                        <span class="select__label">
+	                                         <label data-ctrl-dom="label" class="select__floating-label" for="select-role"><?php esc_html_e( 'My profile', 'woocommerce' ); ?></label>
+	                                         ▾
+	                                         </span>
+	                                         <div class="select__error">
+	                                            <small id="architect-register-country-error"><?php esc_html_e( 'Specify your profile', 'woocommerce' ); ?></small>
+	                                        </div>
+	                                    </div>
+	                                </div>
 	                                <div class="v-spacer-05">
 	                                    <div class="form-group input-text   " data-ctrl="InputText">
 	                                        <input type="text" class="form-control input-text__input is--empty" aria-describedby="architect-register-name-error" data-ctrl-dom="input" name="billing_first_name" id="reg_billing_first_name" value="<?php if ( ! empty( $_POST['billing_first_name'] ) ) echo esc_html( $_POST['billing_first_name'] ); ?>" required="">
@@ -196,6 +239,21 @@ function separate_registration_form() {
    return ob_get_clean();
 }
 
+apply_filters( 'account_fields', array(
+        'vat_id' => array(
+            'type'        => 'text',
+            'label'       => __( 'Social Security Number', 'woocommerce' ),
+            'placeholder' => __( 'XXX-XX-XXXX', 'woocommerce' ),
+            'required'    => true,
+        ),
+        'profile_image' => array(
+            'type'        => 'text',
+            'label'       => __( 'Profile image', 'woocommerce' ),
+            'placeholder' => __( '/wp-content/themes/MindMates-wp/static/img/mindmate-avatar.jpg', 'woocommerce' ),
+            'required'    => true,
+        )
+    ) );
+
 function woocom_save_extra_register_fields($customer_id) {
 
 	$registered_user = get_user_by('ID',$customer_id);
@@ -206,6 +264,7 @@ function woocom_save_extra_register_fields($customer_id) {
             $first_name = $_POST['billing_first_name'];
             $last_name = $_POST['billing_last_name'];
 
+            update_user_meta($customer_id, 'profile_image', '/wp-content/themes/MindMates-wp/static/img/mindmate-avatar.jpg');
             update_user_meta($customer_id, 'billing_first_name', $first_name);
             update_user_meta($customer_id, 'billing_last_name', $last_name);
             update_user_meta($customer_id, 'billing_country', $_POST['billing_country']);
@@ -373,15 +432,6 @@ function display_myaccount_edit_account()
     return WC_Shortcode_My_Account::edit_account();
 }
 
-apply_filters( 'account_fields', array(
-        'vat_id' => array(
-            'type'        => 'text',
-            'label'       => __( 'Tax Payer Identification Number (NPWP)', 'woocommerce' ),
-            'placeholder' => __( 'XXX-XX-XXXX', 'woocommerce' ),
-            'required'    => true,
-        ),
-    ) );
-
 function woocom_save_extra_address_fields($customer_id, $load_address) {
 	$registered_user = get_user_by('ID',$customer_id);
     if($registered_user) {
@@ -396,7 +446,6 @@ function woocom_save_extra_address_fields($customer_id, $load_address) {
             update_user_meta($customer_id, 'shipping_state', $_POST['shipping_state']);
             update_user_meta($customer_id, 'shipping_postcode', $_POST['shipping_postcode']);
             update_user_meta($customer_id, 'shipping_city', $_POST['shipping_city']);
-            update_user_meta($customer_id, 'shipping_company', $_POST['billing_company']);
         }
     }
 }
@@ -410,8 +459,27 @@ function woocom_save_extra_account_fields($customer_id) {
         $user_role = $registered_user->roles;
         if((in_array('customer', (array) $user_role))){
 
+        	$registered_user->remove_role('student');
+            $registered_user->remove_role('teacher');
+            $registered_user->remove_role('parent');
+            $registered_user->add_role($_POST['role']);
+
             $first_name = $_POST['account_first_name'];
             $last_name = $_POST['account_last_name'];
+
+            if ( isset( $_FILES['uploader'] ) ) {
+		        require_once( ABSPATH . 'wp-admin/includes/image.php' );
+		        require_once( ABSPATH . 'wp-admin/includes/file.php' );
+		        require_once( ABSPATH . 'wp-admin/includes/media.php' );
+
+		        $attachment_id = media_handle_upload( 'uploader', 0 );
+
+		        if ( is_wp_error( $attachment_id ) ) {
+		            update_user_meta( $customer_id, 'profile_image', $_FILES['uploader'] . ": " . $attachment_id->get_error_message() );
+		        } else {
+		            update_user_meta( $customer_id, 'profile_image', $attachment_id );
+		        }
+		   }
 
             $update_data = array(
                 'ID' => $customer_id,

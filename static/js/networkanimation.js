@@ -359,7 +359,7 @@
 		this.ctx.setTransform(2, 0, 0, 2, 0, 0);
     };
 
-    var labels = ["physics", "english", "mathematics", "science", "latin", "drawing", "history", "chemistry", "biology", "", "", "", "", "", "", "", ""];
+    var labels = ["physics", "english", "mathematics", "science", "latin", "drawing", "history", "chemistry", "biology", "philosophy","", "", "", "", "", "", "", ""];
 
     var linkXY = {};
     var linkWidths = {};

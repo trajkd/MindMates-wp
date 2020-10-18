@@ -546,6 +546,7 @@ header.masthead .site-heading {
   padding: 0;
   color: #343a40;
   position: relative;
+  margin-top: 100px;
 }
 
 header.masthead .page-heading,
@@ -971,11 +972,11 @@ ul.menu.safari {
 }
 
 .menu-item:hover .MM {
-  color: #4fcdf0;
+  color: #243e8e;
 }
 
 .menu-item:hover .lighten {
-  color: #4fcdf0;
+  color: #243e8e;
 }
 
 #fulltitle {
@@ -1018,6 +1019,18 @@ h1 .MM {
 .copyright .MM {
   letter-spacing: -4px;
   overflow: visible;
+}
+
+.card .MM {
+  letter-spacing: -0.9vw;
+  overflow: visible;
+}
+
+@media only screen and (max-width: 991px) {
+  .card .MM {
+    letter-spacing: -2.1vw;
+    overflow: visible;
+  }
 }
 
 ul.menu.horizontal li {

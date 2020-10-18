@@ -27,8 +27,38 @@
 <body>
   <div id="sidebar-section-peripherial">
     <?php get_sidebar(); ?>
-    <?php get_footer(); ?>
-  </div>
+      <div class="mdc-layout-grid projects-grid">
+        <div class="mdc-layout-grid__inner">
+          <?php
+
+            $cats = get_categories();
+
+            foreach($cats as $cat) {
+          ?>
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2">
+            <div class="mdc-card">
+              <div class="display">
+                <a href="<?php echo get_category_link( $cat->term_id ) ?>">
+                  <div class="mdc-card__primary-action">
+                    <div class="mdc-card__media my-card__media" style="background-image: url('<?php if(category_description( $cat )) echo category_description( $cat ); else echo '/wp-content/uploads/2020/08/grey.png' ?>'); background-size: cover;">
+                      <div class="summary">
+                        <b><?php echo $cat->name; ?></b>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <?php
+            }
+          ?>
+        </div>
+      </div>
+      <div class="padded">
+        <?php get_footer(); ?>
+      </div>
+    </div>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="/wp-content/themes/MindMates-wp/static/js/jquery.js"></script>

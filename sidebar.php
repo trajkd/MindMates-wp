@@ -13,7 +13,7 @@
       <a id="order" href="/wiki/">
         <i class="far fa-question-circle"></i>
       </a>
-      <a id="wishlist" href="">
+      <a id="wishlist" href="/watchlist">
         <i class="fas fa-heart stroke-transparent"></i>
       </a>
     </div>

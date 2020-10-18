@@ -124,8 +124,8 @@
 }
 
 .mdc-button:not(:disabled) {
-    color: #ff0007;
-    color: var(--mdc-theme-primary, #ff0007)
+    color: #243e8e;
+    color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-button:disabled {
@@ -188,8 +188,8 @@ svg.mdc-button__icon {
 
 .mdc-button--raised:not(:disabled),
 .mdc-button--unelevated:not(:disabled) {
-    background-color: #ff0007;
-    background-color: var(--mdc-theme-primary, #ff0007)
+    background-color: #243e8e;
+    background-color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-button--raised:not(:disabled),
@@ -396,8 +396,8 @@ svg.mdc-button__icon {
 
 .mdc-button .mdc-button__ripple::before,
 .mdc-button .mdc-button__ripple::after {
-    background-color: #ff0007;
-    background-color: var(--mdc-theme-primary, #ff0007)
+    background-color: #243e8e;
+    background-color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-button:hover .mdc-button__ripple::before {
@@ -1885,8 +1885,8 @@ svg.mdc-button__icon {
 }
 
 .mdc-chip-set--choice .mdc-chip.mdc-chip--selected {
-    color: #ff0007;
-    color: var(--mdc-theme-primary, #ff0007)
+    color: #243e8e;
+    color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-chip-set--choice .mdc-chip.mdc-chip--selected .mdc-chip__icon--leading {
@@ -1894,13 +1894,13 @@ svg.mdc-button__icon {
 }
 
 .mdc-chip-set--choice .mdc-chip.mdc-chip--selected:hover {
-    color: #ff0007;
-    color: var(--mdc-theme-primary, #ff0007)
+    color: #243e8e;
+    color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-chip-set--choice .mdc-chip .mdc-chip__checkmark-path {
-    stroke: #ff0007;
-    stroke: var(--mdc-theme-primary, #ff0007)
+    stroke: #243e8e;
+    stroke: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-chip-set--choice .mdc-chip--selected {
@@ -2066,8 +2066,8 @@ svg.mdc-button__icon {
 
 .mdc-chip-set--choice .mdc-chip.mdc-chip--selected .mdc-chip__ripple::before,
 .mdc-chip-set--choice .mdc-chip.mdc-chip--selected .mdc-chip__ripple::after {
-    background-color: #ff0007;
-    background-color: var(--mdc-theme-primary, #ff0007)
+    background-color: #243e8e;
+    background-color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-chip-set--choice .mdc-chip.mdc-chip--selected:hover .mdc-chip__ripple::before {
@@ -2144,8 +2144,8 @@ svg.mdc-button__icon {
 
 .mdc-circular-progress__determinate-circle,
 .mdc-circular-progress__indeterminate-circle-graphic {
-    stroke: #ff0007;
-    stroke: var(--mdc-theme-primary, #ff0007)
+    stroke: #243e8e;
+    stroke: var(--mdc-theme-primary, #243e8e)
 }
 
 @-webkit-keyframes mdc-circular-progress-container-rotate {
@@ -3172,16 +3172,16 @@ svg.mdc-button__icon {
 .mdc-data-table__row-checkbox .mdc-checkbox__native-control:checked~.mdc-checkbox__background::before,
 .mdc-data-table__row-checkbox .mdc-checkbox__native-control:indeterminate~.mdc-checkbox__background::before,
 .mdc-data-table__row-checkbox .mdc-checkbox__native-control[data-indeterminate=true]~.mdc-checkbox__background::before {
-    background-color: #ff0007;
-    background-color: var(--mdc-theme-primary, #ff0007)
+    background-color: #243e8e;
+    background-color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-data-table__header-row-checkbox.mdc-checkbox--selected .mdc-checkbox__ripple::before,
 .mdc-data-table__header-row-checkbox.mdc-checkbox--selected .mdc-checkbox__ripple::after,
 .mdc-data-table__row-checkbox.mdc-checkbox--selected .mdc-checkbox__ripple::before,
 .mdc-data-table__row-checkbox.mdc-checkbox--selected .mdc-checkbox__ripple::after {
-    background-color: #ff0007;
-    background-color: var(--mdc-theme-primary, #ff0007)
+    background-color: #243e8e;
+    background-color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-data-table__header-row-checkbox.mdc-checkbox--selected:hover .mdc-checkbox__ripple::before,
@@ -3217,8 +3217,8 @@ svg.mdc-button__icon {
 .mdc-data-table__header-row-checkbox.mdc-ripple-upgraded--background-focused.mdc-checkbox--selected .mdc-checkbox__ripple::after,
 .mdc-data-table__row-checkbox.mdc-ripple-upgraded--background-focused.mdc-checkbox--selected .mdc-checkbox__ripple::before,
 .mdc-data-table__row-checkbox.mdc-ripple-upgraded--background-focused.mdc-checkbox--selected .mdc-checkbox__ripple::after {
-    background-color: #ff0007;
-    background-color: var(--mdc-theme-primary, #ff0007)
+    background-color: #243e8e;
+    background-color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-data-table__header-row-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate=true])~.mdc-checkbox__background,
@@ -3233,10 +3233,10 @@ svg.mdc-button__icon {
 .mdc-data-table__row-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background,
 .mdc-data-table__row-checkbox .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background,
 .mdc-data-table__row-checkbox .mdc-checkbox__native-control[data-indeterminate=true]:enabled~.mdc-checkbox__background {
-    border-color: #ff0007;
-    border-color: var(--mdc-theme-primary, #ff0007);
-    background-color: #ff0007;
-    background-color: var(--mdc-theme-primary, #ff0007)
+    border-color: #243e8e;
+    border-color: var(--mdc-theme-primary, #243e8e);
+    background-color: #243e8e;
+    background-color: var(--mdc-theme-primary, #243e8e)
 }
 
 @-webkit-keyframes mdc-checkbox-fade-in-background-8A000000primary00000000primary {
@@ -3245,10 +3245,10 @@ svg.mdc-button__icon {
         background-color: transparent
     }
     50% {
-        border-color: #ff0007;
-        border-color: var(--mdc-theme-primary, #ff0007);
-        background-color: #ff0007;
-        background-color: var(--mdc-theme-primary, #ff0007)
+        border-color: #243e8e;
+        border-color: var(--mdc-theme-primary, #243e8e);
+        background-color: #243e8e;
+        background-color: var(--mdc-theme-primary, #243e8e)
     }
 }
 
@@ -3258,20 +3258,20 @@ svg.mdc-button__icon {
         background-color: transparent
     }
     50% {
-        border-color: #ff0007;
-        border-color: var(--mdc-theme-primary, #ff0007);
-        background-color: #ff0007;
-        background-color: var(--mdc-theme-primary, #ff0007)
+        border-color: #243e8e;
+        border-color: var(--mdc-theme-primary, #243e8e);
+        background-color: #243e8e;
+        background-color: var(--mdc-theme-primary, #243e8e)
     }
 }
 
 @-webkit-keyframes mdc-checkbox-fade-out-background-8A000000primary00000000primary {
     0%,
     80% {
-        border-color: #ff0007;
-        border-color: var(--mdc-theme-primary, #ff0007);
-        background-color: #ff0007;
-        background-color: var(--mdc-theme-primary, #ff0007)
+        border-color: #243e8e;
+        border-color: var(--mdc-theme-primary, #243e8e);
+        background-color: #243e8e;
+        background-color: var(--mdc-theme-primary, #243e8e)
     }
     100% {
         border-color: rgba(0, 0, 0, .54);
@@ -3282,10 +3282,10 @@ svg.mdc-button__icon {
 @keyframes mdc-checkbox-fade-out-background-8A000000primary00000000primary {
     0%,
     80% {
-        border-color: #ff0007;
-        border-color: var(--mdc-theme-primary, #ff0007);
-        background-color: #ff0007;
-        background-color: var(--mdc-theme-primary, #ff0007)
+        border-color: #243e8e;
+        border-color: var(--mdc-theme-primary, #243e8e);
+        background-color: #243e8e;
+        background-color: var(--mdc-theme-primary, #243e8e)
     }
     100% {
         border-color: rgba(0, 0, 0, .54);
@@ -3655,7 +3655,7 @@ svg.mdc-button__icon {
 }
 
 .mdc-drawer .mdc-list-item--activated .mdc-list-item__graphic {
-    color: #ff0007
+    color: #243e8e
 }
 
 .mdc-drawer .mdc-list-item--activated {
@@ -6022,8 +6022,8 @@ svg.mdc-button__icon {
 }
 
 .mdc-linear-progress__bar-inner {
-    border-color: #ff0007;
-    border-color: var(--mdc-theme-primary, #ff0007)
+    border-color: #243e8e;
+    border-color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-linear-progress__buffer-dots {
@@ -6115,14 +6115,14 @@ svg.mdc-button__icon {
 
 .mdc-list-item--selected,
 .mdc-list-item--activated {
-    color: #ff0007;
-    color: var(--mdc-theme-primary, #ff0007)
+    color: #243e8e;
+    color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-list-item--selected .mdc-list-item__graphic,
 .mdc-list-item--activated .mdc-list-item__graphic {
-    color: #ff0007;
-    color: var(--mdc-theme-primary, #ff0007)
+    color: #243e8e;
+    color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-list--dense {
@@ -7041,8 +7041,8 @@ a.mdc-list-item {
 
 :not(.mdc-list-item--disabled).mdc-list-item--activated .mdc-list-item__ripple::before,
 :not(.mdc-list-item--disabled).mdc-list-item--activated .mdc-list-item__ripple::after {
-    background-color: #ff0007;
-    background-color: var(--mdc-theme-primary, #ff0007)
+    background-color: #243e8e;
+    background-color: var(--mdc-theme-primary, #243e8e)
 }
 
 :not(.mdc-list-item--disabled).mdc-list-item--activated:hover .mdc-list-item__ripple::before {
@@ -7074,8 +7074,8 @@ a.mdc-list-item {
 
 :not(.mdc-list-item--disabled).mdc-list-item--selected .mdc-list-item__ripple::before,
 :not(.mdc-list-item--disabled).mdc-list-item--selected .mdc-list-item__ripple::after {
-    background-color: #ff0007;
-    background-color: var(--mdc-theme-primary, #ff0007)
+    background-color: #243e8e;
+    background-color: var(--mdc-theme-primary, #243e8e)
 }
 
 :not(.mdc-list-item--disabled).mdc-list-item--selected:hover .mdc-list-item__ripple::before {
@@ -7866,8 +7866,8 @@ a.mdc-list-item {
 
 .mdc-ripple-surface--primary::before,
 .mdc-ripple-surface--primary::after {
-    background-color: #ff0007;
-    background-color: var(--mdc-theme-primary, #ff0007)
+    background-color: #243e8e;
+    background-color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-ripple-surface--primary:hover::before {
@@ -8153,8 +8153,8 @@ a.mdc-list-item {
 }
 
 .mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-select__dropdown-icon {
-    fill: #ff0007;
-    fill: var(--mdc-theme-primary, #ff0007)
+    fill: #243e8e;
+    fill: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-select:not(.mdc-select--disabled)+.mdc-select-helper-text {
@@ -8166,8 +8166,8 @@ a.mdc-list-item {
 }
 
 .mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-line-ripple::after {
-    border-bottom-color: #ff0007;
-    border-bottom-color: var(--mdc-theme-primary, #ff0007)
+    border-bottom-color: #243e8e;
+    border-bottom-color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-floating-label {
@@ -8499,8 +8499,8 @@ a.mdc-list-item {
 .mdc-select--outlined:not(.mdc-select--disabled).mdc-select--focused .mdc-notched-outline .mdc-notched-outline__leading,
 .mdc-select--outlined:not(.mdc-select--disabled).mdc-select--focused .mdc-notched-outline .mdc-notched-outline__notch,
 .mdc-select--outlined:not(.mdc-select--disabled).mdc-select--focused .mdc-notched-outline .mdc-notched-outline__trailing {
-    border-color: #ff0007;
-    border-color: var(--mdc-theme-primary, #ff0007)
+    border-color: #243e8e;
+    border-color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-select--outlined.mdc-select--disabled .mdc-notched-outline__leading,
@@ -9829,13 +9829,13 @@ a.mdc-list-item {
 }
 
 .mdc-tab--active .mdc-tab__text-label {
-    color: #ff0007;
-    color: var(--mdc-theme-primary, #ff0007)
+    color: #243e8e;
+    color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-tab--active .mdc-tab__icon {
-    color: #ff0007;
-    color: var(--mdc-theme-primary, #ff0007);
+    color: #243e8e;
+    color: var(--mdc-theme-primary, #243e8e);
     fill: currentColor
 }
 
@@ -9931,8 +9931,8 @@ a.mdc-list-item {
 
 .mdc-tab__ripple::before,
 .mdc-tab__ripple::after {
-    background-color: #ff0007;
-    background-color: var(--mdc-theme-primary, #ff0007)
+    background-color: #243e8e;
+    background-color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-tab__ripple:hover::before {
@@ -9983,8 +9983,8 @@ a.mdc-list-item {
 }
 
 .mdc-tab-indicator .mdc-tab-indicator__content--underline {
-    border-color: #ff0007;
-    border-color: var(--mdc-theme-primary, #ff0007)
+    border-color: #243e8e;
+    border-color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-tab-indicator .mdc-tab-indicator__content--icon {
@@ -10220,8 +10220,8 @@ a.mdc-list-item {
 }
 
 .mdc-text-field .mdc-text-field__input {
-    caret-color: #ff0007;
-    caret-color: var(--mdc-theme-primary, #ff0007)
+    caret-color: #243e8e;
+    caret-color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-text-field:not(.mdc-text-field--disabled)+.mdc-text-field-helper-line .mdc-text-field-helper-text {
@@ -10518,8 +10518,8 @@ a.mdc-list-item {
 }
 
 .mdc-text-field--filled .mdc-line-ripple::after {
-    border-bottom-color: #ff0007;
-    border-bottom-color: var(--mdc-theme-primary, #ff0007)
+    border-bottom-color: #243e8e;
+    border-bottom-color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-text-field--filled .mdc-floating-label {
@@ -10645,8 +10645,8 @@ a.mdc-list-item {
 .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
 .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
 .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing {
-    border-color: #ff0007;
-    border-color: var(--mdc-theme-primary, #ff0007)
+    border-color: #243e8e;
+    border-color: var(--mdc-theme-primary, #243e8e)
 }
 
 .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading {
@@ -11647,7 +11647,7 @@ a.mdc-list-item {
 }
 
 :root {
-    --mdc-theme-primary: #ff0007;
+    --mdc-theme-primary: #243e8e;
     --mdc-theme-secondary: #018786;
     --mdc-theme-background: #fff;
     --mdc-theme-surface: #fff;
@@ -11674,8 +11674,8 @@ a.mdc-list-item {
 }
 
 .mdc-theme--primary {
-    color: #ff0007 !important;
-    color: var(--mdc-theme-primary, #ff0007) !important
+    color: #243e8e !important;
+    color: var(--mdc-theme-primary, #243e8e) !important
 }
 
 .mdc-theme--secondary {
@@ -11794,8 +11794,8 @@ a.mdc-list-item {
 }
 
 .mdc-theme--primary-bg {
-    background-color: #ff0007 !important;
-    background-color: var(--mdc-theme-primary, #ff0007) !important
+    background-color: #243e8e !important;
+    background-color: var(--mdc-theme-primary, #243e8e) !important
 }
 
 .mdc-theme--secondary-bg {
@@ -11804,8 +11804,8 @@ a.mdc-list-item {
 }
 
 .mdc-top-app-bar {
-    background-color: #ff0007;
-    background-color: var(--mdc-theme-primary, #ff0007);
+    background-color: #243e8e;
+    background-color: var(--mdc-theme-primary, #243e8e);
     color: #fff;
     display: flex;
     position: fixed;

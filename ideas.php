@@ -33,16 +33,22 @@
         <script src="/wp-content/themes/MindMates-wp/static/js/main.js"></script>
         <script src="https://kit.fontawesome.com/4c0b3ae1d6.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/wp-content/themes/MindMates-wp/static/css/app.css">
-        <link rel="stylesheet" href="/wp-content/themes/MindMates-wp/static/css/css2">
+        <link rel="stylesheet" href="/wp-content/themes/MindMates-wp/static/css/css2.css">
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/idt-chat.css">
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/idt-history.css">
+        <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/idt-user-list.css">
         <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/boffi.css">
         <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/clean-blog.css">
         <style>
             :root {
-            --main-color-hue: 360;
-            --main-color-saturation: 60%;
-            --main-color-lightness: 50%;
+            --main-color-hue: 225;
+            --main-color-saturation: 75%;
+            --main-color-lightness: 56%;
             --title-font-family: Alata, serif;
             --text-font-family: Roboto, sans-serif;
+            }
+            .Ideas {
+                color: #243e8e;
             }
         </style>
         <meta name="title" content="<?php bloginfo( 'name' ) ?>">

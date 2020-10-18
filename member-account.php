@@ -37,6 +37,7 @@ if ( !is_user_logged_in() ){ header( "Location: /member/login" ); die; } ?>
   <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/base.scss">
   <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/bg.scss">
   <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/select.css">
+  <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/app.css">
   <link rel="stylesheet" type="text/css" href="/wp-content/themes/MindMates-wp/static/css/boffi.css">
   <link rel="stylesheet" href="/wp-content/themes/MindMates-wp/static/fonts/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,500i,700,800i" rel="stylesheet">
@@ -98,6 +99,20 @@ if ( !is_user_logged_in() ){ header( "Location: /member/login" ); die; } ?>
 <script src="/wp-content/themes/MindMates-wp/static/js/crs.min.js"></script>
 <script src="/wp-content/themes/MindMates-wp/static/js/jquery.selectric.js"></script>
 <script type="text/javascript">
+    $(".upload-logo").change(function(e) {
+
+      var uploadedStep = $(this)
+
+      logofiles = e.originalEvent.srcElement.files;
+
+        var file = logofiles[0];
+
+        var reader = new FileReader();
+        reader.onloadend = function() {
+          $(".project-intro__logo img").attr("src", reader.result);
+        }
+        reader.readAsDataURL(file);
+    });
     var posted_billing_state = <?php if (isset( $_POST['billing_state'] ) ) echo json_encode(esc_html($_POST['billing_state'])); else echo '""' ?>;
     var posted_shipping_state = <?php if (isset( $_POST['shipping_state'] ) ) echo json_encode(esc_html($_POST['shipping_state'])); else echo '""' ?>;
 </script>
