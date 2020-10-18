@@ -104,7 +104,7 @@ dynamodb.scan(scanParams, function(err, data) {
 							                <h3 class="projects-card__content__title">`+data.Items[i].Title.S+`</h3>
 							                <p class="projects-card__content__text">`+data.Items[i].Description.S+`</p>
 							                <div class="projects-card__content__tag-list">`;
-			for (var i = 0; i < tracks.length; i++) {
+			for (var j = 0; j < tracks.length; j++) {
 				projectItem += `<span class="projects-card__content__tag-list__tag">`+tracks[i]+`</span>`;
 			}
 			projectItem += `</div>
@@ -113,7 +113,7 @@ dynamodb.scan(scanParams, function(err, data) {
 			            <div class="column small-12 medium-8 projects-card__wrap">
 			                <div class="projects-card__wrap-image" style="background-image: url('`+imageBG+`');"> </div>
 			                <div class="projects-card__hire-wrapper">`;
-			for (var i = 0; i < hiring.length; i++) {
+			for (var k = 0; k < hiring.length; k++) {
 				projectItem += `<div class="projects-card__hire">
 					                    <div class="projects-card__hire__my-profile many"> <span class="projects-card__hire__text1">We're seeking</span> <span class="projects-card__hire__text3">`+hiring[i]+`s</span> </div>
 					                    <div class="projects-card__hire__icon"> <i class="fas fa-bullhorn"></i> </div>
