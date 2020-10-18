@@ -111,10 +111,10 @@
           <span class='tagline'>
             <span>
               <span class='bracket'>\([\)</span>
-              <span class='initial'>E</span><span class='hidden nameFull mpathy'>mpathy</span>
+              <span class='initial'>E</span><span class='hidden nameFull mpathy'>ducation</span>
               <span>=</span>
               <span class='initial'>m</span><span class='hidden nameFull ind'>ind</span>
-              <span class='initial'>c</span><span class='hidden nameFull reativity'>reativity</span><span>²</span>
+              <span class='initial'>c</span><span class='hidden nameFull reativity'>ollaboration</span><span>²</span>
               <span class='bracket'>\(]\)</span>
               <!-- \([ E = mc^2 ]\) -->
             </span>
