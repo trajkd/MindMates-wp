@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost", "bn_wordpress", "1857dd46f4", "bitnami_wordpress");
+$connect = mysqli_connect("3.120.249.39", "bn_wordpress", "8f970997a1", "bitnami_wordpress");
 $output = '';
 $sql = "SELECT * FROM wp_users WHERE display_name LIKE '".$_POST["search"]."%'"; 
 $result = mysqli_query($connect, $sql);

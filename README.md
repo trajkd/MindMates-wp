@@ -3,7 +3,7 @@
 The MindMates **open collaborative crowdsourcing platform** was built in occasion of the 2020 Hackerearth [Hackccelerate](https://www.hackerearth.com/challenges/hackathon/hackccelerate-2020/) by team MindMates.
 
 ## Demo
-The platform can be explored at https://mindmates.net
+The platform can be explored at https://mindmates.mooo.com/
 
 ## Problem statement
 #### The Learning App
@@ -96,8 +96,9 @@ Let at least one user join the platform and become a member. After that, go to U
 
 ##### Custom Post Type Maker
 Install this plugin to easily add custom post types. Add two new custom post types:
-- Title: Project; Custom Post Type Name: projects; Label: Projects; Singular Name: Project
+- Title: Projects; Custom Post Type Name: projects; Label: Projects; Singular Name: Project
 - Title: Wiki; Custom Post Type Name: wiki; Label: Wikis; Singular Name: Wiki
+
 Go to Post Types > Taxonomies and add a new custom taxonomy: 
 - Title: Project topics; Custom Taxonomy Name: topics; Label: Project topics; Singular Name: Project topic; Post types: Projects
 

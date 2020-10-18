@@ -313,9 +313,9 @@ img::-moz-selection {
     -moz-transition: all 1s;
     -webkit-transition: all 1s;
   }
-  .mpathy { width: 80px; }
+  .mpathy { width: 90px; }
   .ind { width: 32px; }
-  .reativity { width: 91.2px; }
+  .reativity { width: 131.2px; }
   .navbar {
     padding: .5rem 0;
   }
@@ -553,6 +553,7 @@ header.masthead .page-heading,
 header.masthead .site-heading {
   height: 100vh;
   text-align: center;
+  top: 200px;
 }
 
 header.masthead .page-heading h1,
@@ -976,7 +977,7 @@ ul.menu.safari {
 }
 
 .menu-item:hover .lighten {
-  color: #243e8e;
+  color: #243e8e; 
 }
 
 #fulltitle {
