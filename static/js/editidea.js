@@ -10,6 +10,103 @@ stepfilesDict["step7"] = "";
 stepfilesDict["step8"] = "";
 stepfilesDict["step9"] = "";
 
+$(document).ready(function() {
+	$('.project-team__actions__input input').keyup(function() {
+		var txt = $(this).val();
+		if (txt != '') {
+			$.ajax({
+				url: "/wp-content/themes/MindMates-wp/fetch.php",
+				method: "POST",
+				data: {search: txt},
+				dataType: "text",
+				success: function(data) {
+					$('#result').html(data);
+
+					$(".project-team__action-add").click( function() {
+						var teammate_id = $(this).parent().parent().children().first().attr("id");
+						$.ajax({
+							type : "GET",
+							dataType : "json",
+							url : "/wp-json/wp/v2/users/"+teammate_id+"?context=edit",
+							beforeSend: function ( xhr ) {
+								xhr.setRequestHeader( 'X-WP-Nonce', nonce );
+							},
+							error: function(error) {
+								console.log("Error while retreiving user: ");
+								console.log(error);
+							},
+							success: function(response) {
+								if (response.roles.includes("student")) {
+									var teammate_role = "Student";
+								} else if (response.roles.includes("teacher")) {
+									var teammate_role = "Teacher";
+								} else if (response.roles.includes("parent")) {
+									var teammate_role = "Parent";
+								}
+								var teammate_id = response.id;
+								var teammate_name = response.name;
+								if (response.meta.profile_image === '/wp-content/themes/MindMates-wp/static/img/mindmate-avatar.jpg' || (typeof response.meta.profile_image !== 'undefined' && response.meta.profile_image.length === 0) ) {
+									$(".project-team__list").append(`<li class="project-team__list-item">
+																        <div class="project-member">
+																            <idt-user-avatar class="author__avatar" user="participant" size="90">
+																                <div class="idt-user-avatar avatar--participant" style="width: 90px; height: 90px; background-image: url('/wp-content/themes/MindMates-wp/static/img/mindmate-avatar.jpg')">
+																                </div>
+																            </idt-user-avatar>
+																            <idt-user-information class="author__information" size="23"is-stacked="true" user="participant">
+																                <div class="idt-user-information">
+																                	<span class="idt-user-information__id" id="`+teammate_id+`"></span>
+																                    <span class="idt-user-information__username username--is-stacked" style="font-size: 23px;">`+teammate_name+`</span> 
+																                    <span class="idt-user-information__classification">
+																                        <span class="idt-user-information__classification__tag" style="font-size: 17.25px;">`+teammate_role+`</span>
+																                    </span>
+																                </div>
+																            </idt-user-information>
+																            <div class="project-member__name">  </div>
+																            <span class="ng-hide"></span> <!----> <!----> 
+																        </div>
+																    </li>`);
+								} else {
+									$.ajax({
+							            type : "GET",
+							            dataType : "json",
+							            url : "/wp-json/wp/v2/media/"+response.meta.profile_image,
+							            error: function(error) {
+							              console.log("Error while retreiving profile image: " + error);
+							            },
+							            success: function(response) {
+							            	$(".project-team__list").append(`<li class="project-team__list-item">
+																		        <div class="project-member">
+																		            <idt-user-avatar class="author__avatar" user="participant" size="90">
+																		                <div class="idt-user-avatar avatar--participant" style="width: 90px; height: 90px; background-image: url(`+response.source_url+`)">
+																		                </div>
+																		            </idt-user-avatar>
+																		            <idt-user-information class="author__information" size="23"is-stacked="true" user="participant">
+																		                <div class="idt-user-information">
+																		                	<span class="idt-user-information__id" id="`+teammate_id+`"></span>
+																		                    <span class="idt-user-information__username username--is-stacked" style="font-size: 23px;">`+teammate_name+`</span> 
+																		                    <span class="idt-user-information__classification">
+																		                        <span class="idt-user-information__classification__tag" style="font-size: 17.25px;">`+teammate_role+`</span>
+																		                    </span>
+																		                </div>
+																		            </idt-user-information>
+																		            <div class="project-member__name">  </div>
+																		            <span class="ng-hide"></span> <!----> <!----> 
+																		        </div>
+																		    </li>`);
+							            }
+							        });
+								}
+							}
+						});
+					});
+				}
+			});
+		} else {
+			$('#result').html('');
+		}
+	});
+});
+
 $(".image-bg").click( function() {
 	$(".video-bg").addClass("hollow");
 	$(this).removeClass("hollow");
@@ -423,7 +520,7 @@ var queryParams = {
 		':id': {S: projectID}
 	},
 	KeyConditionExpression: 'ProjectID = :id',
-	ProjectionExpression: 'ProjectID, Title, Description, Website, ImageBG, YoutubeBG, Logo, Tracks, Issue, Solution, ProjectStepImage1, ProjectStepTitle1, ProjectStepDescription1, ProjectStepImage2, ProjectStepTitle2, ProjectStepDescription2, ProjectStepImage3, ProjectStepTitle3, ProjectStepDescription3, ProjectStepImage4, ProjectStepTitle4, ProjectStepDescription4, PDF, Slides, Hiring',
+	ProjectionExpression: 'ProjectID, Title, Description, Website, ImageBG, YoutubeBG, Logo, Tracks, Issue, Solution, ProjectStepImage1, ProjectStepTitle1, ProjectStepDescription1, ProjectStepImage2, ProjectStepTitle2, ProjectStepDescription2, ProjectStepImage3, ProjectStepTitle3, ProjectStepDescription3, ProjectStepImage4, ProjectStepTitle4, ProjectStepDescription4, PDF, Slides, Teammates, Hiring, PersonalNotes',
 	TableName: 'Projects'
 };
 
@@ -432,11 +529,6 @@ dynamodb.query(queryParams, function(err, data) {
 		console.log("Error", err);
 	} else {
 		if (data.Items.length > 0) {
-
-			$(".idt-switch__inner").toggleClass("on");
-			$(".idt-switch__inner").toggleClass("off");
-			$(".idt-switch__btn").toggleClass("on");
-			$(".idt-switch__btn").toggleClass("off");
 
 			$(".project-title").val(data.Items[0].Title.S);
 			$(".project-tweet").val(data.Items[0].Description.S);
@@ -1038,11 +1130,93 @@ dynamodb.query(queryParams, function(err, data) {
 			} else if (data.Items[0].Slides.S !== "") {
 				$(".upload-slides").val(data.Items[0].Slides.S);
 			}
-			var hiring = (data.Items[0].Hiring.S).split(',');
-			for (var i = 0; i < hiring.length; i++) {
-				$("."+hiring[i].toLowerCase().replace(" ", "-").replace("/", "")).addClass("enabled");
-				$("."+hiring[i].toLowerCase().replace(" ", "-").replace("/", "")).find(".project-hires__item__check").addClass("checked");
+
+			var teammates_IDs = (data.Items[0].Teammates.S).split(',');
+			for (var k = 0; k < teammates_IDs.length; k++) {
+				$.ajax({
+					type : "GET",
+					dataType : "json",
+					url : "/wp-json/wp/v2/users/"+teammates_IDs[k]+"?context=edit",
+					beforeSend: function ( xhr ) {
+						xhr.setRequestHeader( 'X-WP-Nonce', nonce );
+					},
+					error: function(error) {
+						console.log("Error while retreiving user: ");
+						console.log(error);
+					},
+					success: function(response) {
+						if (response.roles.includes("student")) {
+							var teammate_role = "Student";
+						} else if (response.roles.includes("teacher")) {
+							var teammate_role = "Teacher";
+						} else if (response.roles.includes("parent")) {
+							var teammate_role = "Parent";
+						}
+						var teammate_id = response.id;
+						var teammate_name = response.name;
+						$(".project-team__list").html("");
+						if (response.meta.profile_image === '/wp-content/themes/MindMates-wp/static/img/mindmate-avatar.jpg' || (typeof response.meta.profile_image !== 'undefined' && response.meta.profile_image.length === 0) ) {
+							$(".project-team__list").append(`<li class="project-team__list-item">
+														        <div class="project-member">
+														            <idt-user-avatar class="author__avatar" user="participant" size="90">
+														                <div class="idt-user-avatar avatar--participant" style="width: 90px; height: 90px; background-image: url('/wp-content/themes/MindMates-wp/static/img/mindmate-avatar.jpg')">
+														                </div>
+														            </idt-user-avatar>
+														            <idt-user-information class="author__information" size="23"is-stacked="true" user="participant">
+														                <div class="idt-user-information">
+														                	<span class="idt-user-information__id" id="`+teammate_id+`"></span>
+														                    <span class="idt-user-information__username username--is-stacked" style="font-size: 23px;">`+teammate_name+`</span> 
+														                    <span class="idt-user-information__classification">
+														                        <span class="idt-user-information__classification__tag" style="font-size: 17.25px;">`+teammate_role+`</span>
+														                    </span>
+														                </div>
+														            </idt-user-information>
+														            <div class="project-member__name">  </div>
+														            <span class="ng-hide"></span> <!----> <!----> 
+														        </div>
+														    </li>`);
+						} else {
+							$.ajax({
+					            type : "GET",
+					            dataType : "json",
+					            url : "/wp-json/wp/v2/media/"+response.meta.profile_image,
+					            error: function(error) {
+					              console.log("Error while retreiving profile image: " + error);
+					            },
+					            success: function(response) {
+					            	$(".project-team__list").append(`<li class="project-team__list-item">
+																        <div class="project-member">
+																            <idt-user-avatar class="author__avatar" user="participant" size="90">
+																                <div class="idt-user-avatar avatar--participant" style="width: 90px; height: 90px; background-image: url(`+response.source_url+`)">
+																                </div>
+																            </idt-user-avatar>
+																            <idt-user-information class="author__information" size="23"is-stacked="true" user="participant">
+																                <div class="idt-user-information">
+																                	<span class="idt-user-information__id" id="`+teammate_id+`"></span>
+																                    <span class="idt-user-information__username username--is-stacked" style="font-size: 23px;">`+teammate_name+`</span> 
+																                    <span class="idt-user-information__classification">
+																                        <span class="idt-user-information__classification__tag" style="font-size: 17.25px;">`+teammate_role+`</span>
+																                    </span>
+																                </div>
+																            </idt-user-information>
+																            <div class="project-member__name">  </div>
+																            <span class="ng-hide"></span> <!----> <!----> 
+																        </div>
+																    </li>`);
+					            }
+					        });
+						}
+					}
+				});
 			}
+
+			var hiring = (data.Items[0].Hiring.S).split(',');
+			for (var j = 0; j < hiring.length; j++) {
+				$("."+hiring[j].toLowerCase().replace(" ", "-").replace("/", "")).addClass("enabled");
+				$("."+hiring[j].toLowerCase().replace(" ", "-").replace("/", "")).find(".project-hires__item__check").addClass("checked");
+			}
+
+			$(".personal-notes__textarea").val(data.Items[0].PersonalNotes.S);
 		} else {
 			$(".project-hiw__list").html(`<li class="project-hiw__list-item project-hiw__list-item1">
 						                    <div class="project-hiw">
@@ -1236,6 +1410,7 @@ function insertData() {
 			console.log("Error", err);
 		} else {
 			var currentDate = new Date();
+
 			var checkedTracks = $(".checked");
 			var checkedCSV = "";
 			for (var i = 0; i < checkedTracks.length; i++) {
@@ -1245,12 +1420,20 @@ function insertData() {
 				checkedCSV.replace(",null", "");
 			}
 			checkedCSV = checkedCSV.slice(0, -1);
+
 			var hiringCSV = "";
 			var hiringList = $(".project-hires__item.enabled");
 			for (var i = 0; i < hiringList.length; i++) {
 				hiringCSV += $(hiringList[i]).children().first().html() + ",";
 			}
 			hiringCSV = hiringCSV.slice(0, -1);
+
+			var teammatesCSV = "";
+			var teammatesList = $(".idt-user-information__id");
+			for (var i = 0; i < teammatesList.length; i++) {
+				teammatesCSV += $(teammatesList[i]).attr("id") + ",";
+			}
+			teammatesCSV = teammatesCSV.slice(0, -1);
 			if ($(".project-step-title4").length === 0) {
 				var projectsteptitle4 = "";
 			} else {
@@ -1487,6 +1670,7 @@ function insertData() {
 						'ProjectStepDescription9': {S: projectstepdescription9},
 						'PDF': {S: pdffileNameURL},
 						'Slides': {S: $(".upload-slides").val()},
+						'Teammates': {S: teammatesCSV},
 						'Hiring': {S: hiringCSV},
 						'PersonalNotes': {S: $(".personal-notes__textarea").val()}
 
@@ -1546,6 +1730,7 @@ function insertData() {
 				    						ProjectStepDescription9 = :projectstepdescription9,
 				    						PDF = :pdf,
 				    						Slides = :slides,
+				    						Teammates = :teammates,
 				    						Hiring = :hiring,
 				    						PersonalNotes = :personalnotes`,
 				    ExpressionAttributeValues:{
@@ -1588,6 +1773,7 @@ function insertData() {
 						":projectstepdescription9": {S: projectstepdescription9},
 						':pdf': {S: pdffileNameURL},
 				        ':slides': {S: $(".upload-slides").val()},
+				        ":teammates": {S: teammatesCSV},
 				        ":hiring": {S: hiringCSV},
 				        ":personalnotes": {S: $(".personal-notes__textarea").val()}
 				    },

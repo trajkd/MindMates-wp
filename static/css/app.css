@@ -63949,4 +63949,18 @@ button.idt-history__header__right__close, button.idt-messenger-close {
 	background-color: transparent;
 }
 
+.found-member + .found-member {
+    margin-top: 5px;
+}
+
+.found-member {
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.project-team__action-add {
+	margin-left: 10px;
+}
+
 /*# sourceMappingURL=app.css.map*/

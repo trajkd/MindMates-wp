@@ -230,7 +230,7 @@ if ( !is_user_logged_in() ){ header( "Location: /member/login" ); die; } ?>
 			                                	<br>
 			                                	<span>Our team</span>
 			                                </h2>
-			                                <p class="text-center"> No teammates yet </p>
+			                                <ul class="project-team__list"></ul>
 			                            </div>
 			                            <div class="column small-12">
 			                                <hr>

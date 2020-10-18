@@ -251,7 +251,7 @@ if ( !is_user_logged_in() ){ header( "Location: /member/login" ); die; } ?>
 	                                <div class="row align-center">
 	                                    <div class="column small-12 large-8">
 	                                        <div class="project-post">
-	                                            <h3 class="project-post__title title--issue"> <span class="project-post__title-vertical title-vertical--issue">the</span> Issue </h3>
+	                                            <h3 class="project-post__title title--issue"> <span class="project-post__title-vertical title-vertical--issue">the</span> Homework </h3>
 	                                            <!---->
 	                                            <div class="project__textarea__container">
 	                                                <div class="idt-max-length__wrapper"><textarea class="the-issue project__textarea ng-pristine ng-untouched ng-valid ng-empty editable" rows="1" placeholder="Explain what motivated your project idea in 600 characters max"></textarea><span class="idt-max-length__counter"></span>
@@ -268,12 +268,12 @@ if ( !is_user_logged_in() ){ header( "Location: /member/login" ); die; } ?>
 	                                        <div class="project-post post--solution">
 	                                            <div class="row align-middle">
 	                                                <div class="column small-12 medium-5">
-	                                                    <h3 class="project-post__title title--solution" style="line-height:100%"> Our Magic Solution </h3>
+	                                                    <h3 class="project-post__title title--solution" style="line-height:100%"> Our Magic Plan of Attack </h3>
 	                                                </div>
 	                                                <div class="column small-12 medium-7">
 	                                                    <!---->
 	                                                    <div class="project__textarea__container">
-	                                                        <div class="idt-max-length__wrapper"><textarea class="the-solution project__textarea ng-pristine ng-untouched ng-valid ng-empty editable" rows="1" placeholder="Explain what makes your idea unique"></textarea><span class="idt-max-length__counter"></span>
+	                                                        <div class="idt-max-length__wrapper"><textarea class="the-solution project__textarea ng-pristine ng-untouched ng-valid ng-empty editable" rows="1" placeholder="Explain what makes your idea unique and how are you going to execute it"></textarea><span class="idt-max-length__counter"></span>
 	                                                        </div>
 	                                                        <!----> 
 	                                                    </div>
@@ -380,11 +380,64 @@ if ( !is_user_logged_in() ){ header( "Location: /member/login" ); die; } ?>
 	                                            <br> <span>Our team</span> </h2>
 	                                            <p class="text-center ng-hide"> No teammates yet </p>
 	                                            <!----> <!---->
+	                                            <ul class="project-team__list">
+												    <!----><!---->
+												    <li class="project-team__list-item">
+												        <div class="project-member">
+												            <idt-user-avatar class="author__avatar" user="participant" size="90">
+												                <div class="idt-user-avatar avatar--participant" style="width: 90px; height: 90px; background-image: url(<?php 
+											                        if ($current_user->profile_image == '/wp-content/themes/MindMates-wp/static/img/mindmate-avatar.jpg') {
+											                            echo $current_user->profile_image;
+											                        } else {
+											                            $user_id = get_current_user_id();
+											                            $attachment_id = get_user_meta( $user_id, 'profile_image', true );
+											                            if ( $attachment_id ) {
+											                                echo wp_get_attachment_url( $attachment_id );
+											                            }
+											                        }
+											                        ?>)">
+												                </div>
+												            </idt-user-avatar>
+												            <idt-user-information class="author__information" size="23"is-stacked="true" user="participant">
+												                <div class="idt-user-information">
+												                	<span class="idt-user-information__id" id="<?php echo esc_html( $current_user->id ); ?>"></span>
+												                    <span class="idt-user-information__username username--is-stacked" style="font-size: 23px;"> <?php echo esc_html( $current_user->display_name ); ?> </span> 
+												                    <span class="idt-user-information__classification">
+												                        <span class="idt-user-information__classification__tag" style="font-size: 17.25px;"> 
+													                        <?php 
+														                    $user     = new WP_User( get_current_user_id() );
+														                    $wp_roles = new WP_Roles;
+														                    $names    = $wp_roles->get_names();
+														                    $out      = array ();
+
+														                    foreach ( $user->roles as $role )
+														                    {
+														                        if ( isset ( $names[ $role ] ) )
+														                            $out[ $role ] = $names[ $role ];
+														                    }
+														                    if (isset($out['student'])) {
+														                        esc_html_e( 'Student', 'woocommerce' );
+														                    } else if (isset($out['teacher'])) {
+														                        esc_html_e( 'Teacher', 'woocommerce' );
+														                    } else if (isset($out['parent'])) {
+														                        esc_html_e( 'Parent', 'woocommerce' );
+														                    }
+														                    ?>
+												                    	</span>
+												                    </span>
+												                </div>
+												            </idt-user-information>
+												            <div class="project-member__name">  </div>
+												            <span class="ng-hide"></span> <!----> <!----> 
+												        </div>
+												    </li>
+												    <!----><!----> 
+												</ul>
 	                                            <div class="row align-center">
 	                                                <div class="column small-12 large-8">
 	                                                    <div class="project-team__actions">
-	                                                        <div class="project-team__actions__input"> <input type="text"> </div>
-	                                                        <button type="button" class="button project-team__action-add" disabled="disabled"> Add member </button> 
+	                                                        <div class="project-team__actions__input"> <input placeholder="Search members" type="text"> </div>
+	                                                        <div id="result"></div>
 	                                                    </div>
 	                                                </div>
 	                                            </div>
@@ -491,7 +544,7 @@ if ( !is_user_logged_in() ){ header( "Location: /member/login" ); die; } ?>
 	                                                <br> <span>Personal Notes</span> 
 	                                            </h2>
 	                                            <!---->
-	                                            <div class="note"> <span class="note-text"> This section is only visible by you and your teammates </span> </div>
+	                                            <div class="note"> <span class="note-text"> This section is only visible by you </span> </div>
 	                                            <!----> 
 	                                        </div>
 	                                        <div class="column small-12">

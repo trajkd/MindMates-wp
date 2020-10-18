@@ -10,7 +10,7 @@ var queryParams = {
 		':id': {S: projectID}
 	},
 	KeyConditionExpression: 'ProjectID = :id',
-	ProjectionExpression: 'ProjectID, Title, Description, Website, ImageBG, YoutubeBG, Logo, Tracks, Issue, Solution, ProjectStepImage1, ProjectStepTitle1, ProjectStepDescription1, ProjectStepImage2, ProjectStepTitle2, ProjectStepDescription2, ProjectStepImage3, ProjectStepTitle3, ProjectStepDescription3, ProjectStepImage4, ProjectStepTitle4, ProjectStepDescription4, ProjectStepImage5, ProjectStepTitle5, ProjectStepDescription5, ProjectStepImage6, ProjectStepTitle6, ProjectStepDescription6, ProjectStepImage7, ProjectStepTitle7, ProjectStepDescription7, ProjectStepImage8, ProjectStepTitle8, ProjectStepDescription8, ProjectStepImage9, ProjectStepTitle9, ProjectStepDescription9, PDF, Slides, Hiring',
+	ProjectionExpression: 'ProjectID, Title, Description, Website, ImageBG, YoutubeBG, Logo, Tracks, Issue, Solution, ProjectStepImage1, ProjectStepTitle1, ProjectStepDescription1, ProjectStepImage2, ProjectStepTitle2, ProjectStepDescription2, ProjectStepImage3, ProjectStepTitle3, ProjectStepDescription3, ProjectStepImage4, ProjectStepTitle4, ProjectStepDescription4, ProjectStepImage5, ProjectStepTitle5, ProjectStepDescription5, ProjectStepImage6, ProjectStepTitle6, ProjectStepDescription6, ProjectStepImage7, ProjectStepTitle7, ProjectStepDescription7, ProjectStepImage8, ProjectStepTitle8, ProjectStepDescription8, ProjectStepImage9, ProjectStepTitle9, ProjectStepDescription9, PDF, Slides, Teammates, Hiring',
 	TableName: 'Projects'
 };
 
@@ -171,10 +171,90 @@ dynamodb.query(queryParams, function(err, data) {
 															<a href="`+data.Items[0].PDF.S+`">Click here to download the PDF file.</a></p>  
 														</object>`);
 		}
+
+		var teammates_IDs = (data.Items[0].Teammates.S).split(',');
+		for (var k = 0; k < teammates_IDs.length; k++) {
+			$.ajax({
+				type : "GET",
+				dataType : "json",
+				url : "/wp-json/wp/v2/users/"+teammates_IDs[k]+"?context=edit",
+				beforeSend: function ( xhr ) {
+					xhr.setRequestHeader( 'X-WP-Nonce', nonce );
+				},
+				error: function(error) {
+					console.log("Error while retreiving user: ");
+					console.log(error);
+				},
+				success: function(response) {
+					if (response.roles.includes("student")) {
+						var teammate_role = "Student";
+					} else if (response.roles.includes("teacher")) {
+						var teammate_role = "Teacher";
+					} else if (response.roles.includes("parent")) {
+						var teammate_role = "Parent";
+					}
+					var teammate_id = response.id;
+					var teammate_name = response.name;
+					$(".project-team__list").html("");
+					if (response.meta.profile_image === '/wp-content/themes/MindMates-wp/static/img/mindmate-avatar.jpg' || (typeof response.meta.profile_image !== 'undefined' && response.meta.profile_image.length === 0) ) {
+						$(".project-team__list").append(`<li class="project-team__list-item">
+													        <div class="project-member">
+													            <idt-user-avatar class="author__avatar" user="participant" size="90">
+													                <div class="idt-user-avatar avatar--participant" style="width: 90px; height: 90px; background-image: url('/wp-content/themes/MindMates-wp/static/img/mindmate-avatar.jpg')">
+													                </div>
+													            </idt-user-avatar>
+													            <idt-user-information class="author__information" size="23"is-stacked="true" user="participant">
+													                <div class="idt-user-information">
+													                	<span class="idt-user-information__id" id="`+teammate_id+`"></span>
+													                    <span class="idt-user-information__username username--is-stacked" style="font-size: 23px;">`+teammate_name+`</span> 
+													                    <span class="idt-user-information__classification">
+													                        <span class="idt-user-information__classification__tag" style="font-size: 17.25px;">`+teammate_role+`</span>
+													                    </span>
+													                </div>
+													            </idt-user-information>
+													            <div class="project-member__name">  </div>
+													            <span class="ng-hide"></span> <!----> <!----> 
+													        </div>
+													    </li>`);
+					} else {
+						$.ajax({
+				            type : "GET",
+				            dataType : "json",
+				            url : "/wp-json/wp/v2/media/"+response.meta.profile_image,
+				            error: function(error) {
+				              console.log("Error while retreiving profile image: " + error);
+				            },
+				            success: function(response) {
+				            	$(".project-team__list").append(`<li class="project-team__list-item">
+															        <div class="project-member">
+															            <idt-user-avatar class="author__avatar" user="participant" size="90">
+															                <div class="idt-user-avatar avatar--participant" style="width: 90px; height: 90px; background-image: url(`+response.source_url+`)">
+															                </div>
+															            </idt-user-avatar>
+															            <idt-user-information class="author__information" size="23"is-stacked="true" user="participant">
+															                <div class="idt-user-information">
+															                	<span class="idt-user-information__id" id="`+teammate_id+`"></span>
+															                    <span class="idt-user-information__username username--is-stacked" style="font-size: 23px;">`+teammate_name+`</span> 
+															                    <span class="idt-user-information__classification">
+															                        <span class="idt-user-information__classification__tag" style="font-size: 17.25px;">`+teammate_role+`</span>
+															                    </span>
+															                </div>
+															            </idt-user-information>
+															            <div class="project-member__name">  </div>
+															            <span class="ng-hide"></span> <!----> <!----> 
+															        </div>
+															    </li>`);
+				            }
+				        });
+					}
+				}
+			});
+		}
+		
 		var hiring = (data.Items[0].Hiring.S).split(',');
-		for (var i = 0; i < hiring.length; i++) {
+		for (var j = 0; j < hiring.length; j++) {
 			$(".project-hires").append(`<li class="project-hires__item enabled">
-	                                        <span class="project-hires__item__tag">`+hiring[i]+`</span> 
+	                                        <span class="project-hires__item__tag">`+hiring[j]+`</span> 
 	                                        <div class="project-hires__item__info">We need you!</div>
 	                                        <div class="project-hires__item__apply">Apply now</div>
 	                                    </li>`);

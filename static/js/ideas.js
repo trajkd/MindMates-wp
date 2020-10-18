@@ -105,7 +105,7 @@ dynamodb.scan(scanParams, function(err, data) {
 							                <p class="projects-card__content__text">`+data.Items[i].Description.S+`</p>
 							                <div class="projects-card__content__tag-list">`;
 			for (var j = 0; j < tracks.length; j++) {
-				projectItem += `<span class="projects-card__content__tag-list__tag">`+tracks[i]+`</span>`;
+				projectItem += `<span class="projects-card__content__tag-list__tag">`+tracks[j]+`</span>`;
 			}
 			projectItem += `</div>
 			                <div class="projects-card__content__link"> View project<i class="fas fa-arrow-right"></i> </div>
@@ -115,7 +115,7 @@ dynamodb.scan(scanParams, function(err, data) {
 			                <div class="projects-card__hire-wrapper">`;
 			for (var k = 0; k < hiring.length; k++) {
 				projectItem += `<div class="projects-card__hire">
-					                    <div class="projects-card__hire__my-profile many"> <span class="projects-card__hire__text1">We're seeking</span> <span class="projects-card__hire__text3">`+hiring[i]+`s</span> </div>
+					                    <div class="projects-card__hire__my-profile many"> <span class="projects-card__hire__text1">We're seeking</span> <span class="projects-card__hire__text3">`+hiring[k]+`s</span> </div>
 					                    <div class="projects-card__hire__icon"> <i class="fas fa-bullhorn"></i> </div>
 					                </div>`;
 			}
@@ -126,4 +126,17 @@ dynamodb.scan(scanParams, function(err, data) {
 			$(".projects__list__container").append(projectItem);
 		}
 	}
+});
+
+$('.input-dropdown__button').click( function() {
+	$('.dropdown-pane').toggleClass('is-open');
+});
+
+$(".dropdown-pane__checkbox").click( function() {
+	if ($(this).parent().find("input").attr("checked")) {
+        $(this).parent().find("input").removeAttr("checked");
+    } else {
+        $(this).parent().find("input").attr("checked", "checked");
+    }
+	$(this).parent().find("input").toggleClass("checked");
 });
