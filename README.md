@@ -24,19 +24,23 @@ This web app was deployed with AWS. In order to use their cloud infrastructure, 
 Choose a Bitnami WordPress instance. Click on 'Launch instance' and in the AWS Marketplace search for "WordPress with NGINX and SSL Certified by Bitnami and Automattic". You can select the free tier to test the web app.
 
 SSH to the instance, install Git, go to WordPress themes folder and clone the repository into it:
-chmod 400 mindmateskeypair.pem
-ssh -i "mindmateskeypair.pem" bitnami@ec2-x-xxx-xxx-xx.eu-central-1.compute.amazonaws.com
-sudo -i
-apt-get install git
-cd /opt/bitnami/apps/wordpress/htdocs/wp-content/themes
-git clone https://github.com/trajkd/MindMates-wp.git
+
+    chmod 400 mindmateskeypair.pem
+    ssh -i "mindmateskeypair.pem" bitnami@ec2-x-xxx-xxx-xx.eu-central-1.compute.amazonaws.com
+    sudo -i
+    apt-get install git
+    cd /opt/bitnami/apps/wordpress/htdocs/wp-content/themes
+    git clone https://github.com/trajkd/MindMates-wp.git
 
 Remove the Bitnami banner by typing the following in the console: 
-sudo /opt/bitnami/apps/wordpress/bnconfig --disable_banner 1
-sudo /opt/bitnami/ctlscript.sh restart nginx
+
+    sudo /opt/bitnami/apps/wordpress/bnconfig --disable_banner 1
+    sudo /opt/bitnami/ctlscript.sh restart nginx
 
 Now open the public IP address of your instance, go to /wp-admin and enter the default username and password that you can find by typing the following in the console: 
-sudo cat /home/bitnami/bitnami_credentials
+
+    sudo cat /home/bitnami/bitnami_credentials
+
 Add a new administrator, log out from user, and log in with the newly created credentials. You can delete the default user now.
 
 We've provided a backup file to load with the Updraft Plus backup plugin. It includes all the basic setup you need for the web app to work properly. You will only have to change some fields, like SMTP settings and the main URL of the application. Look in the Manual configuration below to see which fields you will need to change. 
